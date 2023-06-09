@@ -1,0 +1,58 @@
+[gd_scene load_steps=14 format=3 uid="uid://cwqqvtglx7fed"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_vmkkk"]
+[ext_resource type="Animation" uid="uid://m5x2m8x3tcel" path="res://addons/godot-xr-tools/hands/animations/left/Pinch Tight.res" id="3_ie34c"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_yysj3"]
+[ext_resource type="PackedScene" uid="uid://djtlrh0oe33ea" path="res://src/objects/assets/coin.glb" id="4_2qq6g"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_m4h4q"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_tokjc"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="7_ongao"]
+[ext_resource type="Animation" uid="uid://ca21ej1p3g2yt" path="res://addons/godot-xr-tools/hands/animations/right/Pinch Tight.res" id="7_wanp7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2xksv"]
+height = 0.416879
+radius = 1.76923
+
+[sub_resource type="Resource" id="Resource_7nbtq"]
+script = ExtResource("5_tokjc")
+open_pose = ExtResource("3_ie34c")
+closed_pose = ExtResource("3_ie34c")
+
+[sub_resource type="Resource" id="Resource_ec2vr"]
+script = ExtResource("5_tokjc")
+open_pose = ExtResource("7_wanp7")
+closed_pose = ExtResource("7_wanp7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6efun"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ohkog"]
+material = SubResource("StandardMaterial3D_6efun")
+flip_faces = true
+top_radius = 0.51
+bottom_radius = 0.51
+height = 0.144
+
+[node name="PickableObject" instance=ExtResource("1_vmkkk")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0.318874, 0)
+shape = SubResource("CylinderShape3D_2xksv")
+
+[node name="GrabPointLeft" parent="." index="1" instance=ExtResource("3_yysj3")]
+transform = Transform3D(0.9227, 0, 0.38552, 0, 1, 0, -0.38552, 0, 0.9227, -0.0659389, 0.375675, 0.451384)
+hand_pose = SubResource("Resource_7nbtq")
+
+[node name="GrabPointRight" parent="." index="2" instance=ExtResource("4_m4h4q")]
+transform = Transform3D(0.988793, 0, -0.149294, 0, 1, 0, 0.149294, 0, 0.988793, 0.0681782, 0.370924, 0.439937)
+hand_pose = SubResource("Resource_ec2vr")
+
+[node name="CoinMesh" parent="." index="3" instance=ExtResource("4_2qq6g")]
+transform = Transform3D(0.299492, 0, -0.0174574, 0, 0.3, 0, 0.0174574, 0, 0.299492, 0, -0.649786, 0)
+
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4"]
+script = ExtResource("7_ongao")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0047932, 0.305385, 0)
+mesh = SubResource("CylinderMesh_ohkog")
