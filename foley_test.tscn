@@ -54,5 +54,5 @@ environment = SubResource("Environment_23npv")
 [node name="Coin" parent="." instance=ExtResource("9_pwjqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27079, 1.26119, 0)
 
-[node name="PickableObject" parent="." instance=ExtResource("9_c7s61")]
+[node name="Bottle" parent="." instance=ExtResource("9_c7s61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09718, 1.64921)
