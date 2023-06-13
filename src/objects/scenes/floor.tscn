@@ -4,10 +4,9 @@
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8koyh"]
-albedo_color = Color(0.0196078, 0.0352941, 0.462745, 1)
-metallic = 1.0
+metallic = 0.7
 metallic_specular = 0.77
-roughness = 0.15
+roughness = 0.14
 emission = Color(0.192157, 0.192157, 0.192157, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gt370"]
