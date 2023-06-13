@@ -390,3 +390,12 @@ func _update_player_radius():
 	if capsule:
 		capsule.mesh.height = player_height
 		capsule.mesh.radius = player_radius
+
+
+# When an object has been picked up, teleportation is disabled.
+# When an object is dropped, teleportation is re-enabled.
+func _on_pickup_has_picked_up(what):
+	enabled = false
+
+func _on_pickup_has_dropped():
+	enabled = true
