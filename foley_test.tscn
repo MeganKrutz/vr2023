@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=15 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://foley_test.gd" id="1_qksgx"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_u4ahu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
 [ext_resource type="PackedScene" uid="uid://w67c0ixxtd3t" path="res://src/objects/scenes/pickable_spray_bottle.tscn" id="9_c7s61"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
+[ext_resource type="PackedScene" uid="uid://dhahoh2fxcp3" path="res://src/objects/assets/cube_dome.glb" id="10_pdvjh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c45jn"]
 
@@ -44,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7115, 0)
 shape = SubResource("CapsuleShape3D_c45jn")
 
 [node name="Floor" parent="." instance=ExtResource("6_vp8px")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1.196, 0, 0, 0, 1.196, 0, 0, 0, 1.196, 1, 0, 0)
 
 [node name="Spotlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.994105, 0.0729821, -0.0801856, 0.107479, -0.760804, 0.64002, -0.0142956, -0.644865, -0.764163, -0.0346661, 9.71461, -4.45577)
@@ -57,3 +58,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27079, 1.26119, 0)
 
 [node name="Bottle" parent="." instance=ExtResource("9_c7s61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09718, 1.64921)
+
+[node name="cube_dome" parent="." instance=ExtResource("10_pdvjh")]
+transform = Transform3D(0.033, 0, 0, 0, 0.033, 0, 0, 0, 0.033, 1.73579, 0.602111, -0.0339899)
