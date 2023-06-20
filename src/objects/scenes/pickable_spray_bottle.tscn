@@ -1,13 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://w67c0ixxtd3t"]
+[gd_scene load_steps=26 format=3 uid="uid://w67c0ixxtd3t"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_5l48x"]
-[ext_resource type="PackedScene" uid="uid://3vqn7s3fuweo" path="res://src/objects/assets/spray_bottle.glb" id="2_v51ve"]
+[ext_resource type="PackedScene" uid="uid://bk1cxdhy5j4qw" path="res://src/objects/assets/spray_bottle.glb" id="2_v51ve"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_ospwm"]
 [ext_resource type="Animation" uid="uid://ddbo6ioa282en" path="res://addons/godot-xr-tools/hands/animations/left/Pistol.res" id="4_p0rc6"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_ix0lt"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_01qpu"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="6_i2t7u"]
 [ext_resource type="Animation" uid="uid://csp3fdknowmi5" path="res://addons/godot-xr-tools/hands/animations/right/Pistol.res" id="7_4hnqg"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="8_qpf4s"]
 [ext_resource type="Material" uid="uid://bvag4leblcbv0" path="res://src/objects/materials/spray_highlight.tres" id="9_hj0e2"]
 [ext_resource type="Script" path="res://src/objects/scenes/SprayParticles.gd" id="9_kr73k"]
 
@@ -166,7 +167,7 @@ height = 0.005
 radial_segments = 8
 rings = 4
 
-[node name="PickableObject" instance=ExtResource("1_5l48x")]
+[node name="PickableObject" groups=["pedestal_object"] instance=ExtResource("1_5l48x")]
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986835, 0.539645, 0.0102229)
@@ -174,9 +175,6 @@ shape = SubResource("CapsuleShape3D_wd4xv")
 
 [node name="SprayBottle" parent="." index="1" instance=ExtResource("2_v51ve")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.087331, 0.252877, 0.0144454)
-
-[node name="Cube002" parent="SprayBottle" index="2"]
-transform = Transform3D(0.102503, -0.00311179, 0, 0.00307096, 0.103866, 0, 0, 0, 0.102548, -0.0231672, 1.03736, 0)
 
 [node name="GrabPointLeft" parent="." index="2" instance=ExtResource("3_ospwm")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.200428, 0.753511, 0.0160236)
@@ -188,7 +186,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.199
 hand_pose = SubResource("Resource_1vtio")
 editor_preview_mode = 1
 
-[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4"]
+[node name="GrabPointSnap" parent="." index="4" instance=ExtResource("8_qpf4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104593, 0.249701, 0.0144347)
+visible = true
+
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="5"]
 script = ExtResource("6_i2t7u")
 
 [node name="BottleHighlight" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0"]
@@ -199,11 +201,11 @@ mesh = SubResource("ArrayMesh_j2ljc")
 transform = Transform3D(0.039, 0, 0, 0, 0.037, 0, 0, 0, 0.045, -0.0915913, 0.717613, 0.0142236)
 mesh = SubResource("ArrayMesh_umq8r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="2"]
+[node name="SprayHighlight" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="2"]
 transform = Transform3D(0.066, 0, 0, 0, 0.0579998, 7.77543e-05, 0, -0.000136659, 0.0329999, -0.0937249, 0.769951, 0.0135317)
 mesh = SubResource("ArrayMesh_3e2bj")
 
-[node name="SprayParticles" type="GPUParticles3D" parent="." index="5"]
+[node name="SprayParticles" type="GPUParticles3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140225, 0.801884, 0.0162019)
 emitting = false
 amount = 20
@@ -216,5 +218,3 @@ draw_pass_1 = SubResource("SphereMesh_6ef8l")
 script = ExtResource("9_kr73k")
 
 [connection signal="action_pressed" from="." to="SprayParticles" method="_on_pickable_object_action_pressed"]
-
-[editable path="SprayBottle"]
