@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://wpyooe40oqia" path="res://src/player/scenes/left_controller.tscn" id="3_0w83j"]
 [ext_resource type="PackedScene" uid="uid://cgij6m84jpu70" path="res://src/player/scenes/right_controller.tscn" id="4_kbx6j"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
-[ext_resource type="PackedScene" uid="uid://cchkv0qm2v3c8" path="res://src/objects/scenes/floor.tscn" id="6_vp8px"]
-[ext_resource type="Texture2D" uid="uid://bpybmu2dc8r0u" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="PackedScene" uid="uid://bm7odobqg015g" path="res://src/objects/scenes/pantheon.tscn" id="7_sd6w1"]
 [ext_resource type="PackedScene" uid="uid://w67c0ixxtd3t" path="res://src/objects/scenes/pickable_spray_bottle.tscn" id="9_c7s61"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c45jn"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
+size = Vector3(0.5, 2, 0.5)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_honiv"]
 panorama = ExtResource("7_q6bic")
@@ -33,18 +34,18 @@ transform = Transform3D(1, 0, 0, 0, 0.870639, 0.491922, 0, -0.491922, 0.870639, 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_u4ahu")]
 
 [node name="LeftController" parent="XROrigin3D" instance=ExtResource("3_0w83j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98439, 1.40333, 0)
 
 [node name="RightController" parent="XROrigin3D" instance=ExtResource("4_kbx6j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87982, 1.51684, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78295, 1.47702, 0)
 
 [node name="Player" parent="XROrigin3D" instance=ExtResource("5_s8xsf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7115, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52041, 0)
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="XROrigin3D/Player"]
-shape = SubResource("CapsuleShape3D_c45jn")
+shape = SubResource("BoxShape3D_bv5lt")
 
-[node name="Floor" parent="." instance=ExtResource("6_vp8px")]
-transform = Transform3D(1.196, 0, 0, 0, 1.196, 0, 0, 0, 1.196, 1, 0, 0)
+[node name="Pantheon" parent="." instance=ExtResource("7_sd6w1")]
 
 [node name="Spotlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.994105, 0.0729821, -0.0801856, 0.107479, -0.760804, 0.64002, -0.0142956, -0.644865, -0.764163, -0.0346661, 9.71461, -4.45577)

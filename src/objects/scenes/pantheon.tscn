@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7odobqg015g"]
+
+[ext_resource type="PackedScene" uid="uid://bpx04d3yp1nf4" path="res://src/objects/assets/pantheon_1.glb" id="1_5wsgo"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ut4eo"]
+height = 1.90187
+radius = 36.6396
+
+[node name="Pantheon" type="StaticBody3D"]
+
+[node name="PantheonMesh" parent="." instance=ExtResource("1_5wsgo")]
+
+[node name="dome" parent="PantheonMesh" index="2"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.36413, -3.7758)
+shape = SubResource("CylinderShape3D_ut4eo")
+
+[editable path="PantheonMesh"]
