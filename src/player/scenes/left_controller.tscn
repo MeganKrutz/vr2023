@@ -9,7 +9,7 @@
 [ext_resource type="Animation" uid="uid://bediglpx0rj7i" path="res://addons/godot-xr-tools/hands/animations/left/Grip 5.res" id="4_tv3xm"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_ts87h"]
 
-[sub_resource type="Resource" id="Resource_00ntg"]
+[sub_resource type="Resource" id="Resource_iowe1"]
 resource_local_to_scene = true
 script = ExtResource("5_ts87h")
 open_pose = ExtResource("4_tv3xm")
@@ -21,15 +21,16 @@ tracker = &"left_hand"
 
 [node name="LeftHand" parent="." instance=ExtResource("1_452mp")]
 hand_material_override = ExtResource("2_cw5as")
-default_pose = SubResource("Resource_00ntg")
+default_pose = SubResource("Resource_iowe1")
 
 [node name="Turn" parent="." instance=ExtResource("2_p0ars")]
 turn_mode = 1
 
 [node name="Teleport" parent="." instance=ExtResource("3_uguow")]
+max_slope = 45.0
 
 [node name="Pickup" parent="." instance=ExtResource("4_oa5vj")]
-grab_distance = 0.4
+grab_distance = 0.6
 
 [connection signal="has_dropped" from="Pickup" to="Teleport" method="_on_pickup_has_dropped"]
 [connection signal="has_picked_up" from="Pickup" to="Teleport" method="_on_pickup_has_picked_up"]

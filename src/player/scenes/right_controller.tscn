@@ -17,8 +17,8 @@ hand_material_override = ExtResource("2_gv17d")
 strafe = true
 
 [node name="Crouch" parent="." instance=ExtResource("4_1k5bc")]
-crouch_height = 0.1
+crouch_height = 0.5
 crouch_type = 1
 
 [node name="Pickup" parent="." instance=ExtResource("3_w5xsx")]
-grab_distance = 0.4
+grab_distance = 0.6

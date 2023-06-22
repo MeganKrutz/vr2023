@@ -12,8 +12,8 @@
 [ext_resource type="Material" uid="uid://bvag4leblcbv0" path="res://src/objects/materials/spray_highlight.tres" id="9_hj0e2"]
 [ext_resource type="Script" path="res://src/objects/scenes/SprayParticles.gd" id="9_kr73k"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hrrdf"]
-points = PackedVector3Array(-0.0753803, 0.980913, -0.39709, 0.487234, -0.740428, 0.828855, 0.44926, -0.928942, -0.861954, -0.493788, -0.842207, -0.836913, -0.557737, 0.117614, 0.696934, 0.344299, 0.624544, 0.630142, -0.474291, -0.893037, 0.861953, 0.435247, 0.326593, -0.716718, -0.545304, 0.173711, -0.705203, -0.267645, 0.88729, 0.543091, 0.201169, -0.986068, 0.493927, 0.143732, 0.972217, -0.469305, 0.411519, 0.361615, 0.732041, -0.38378, -0.958723, -0.768275, 0.494773, 0.0867678, -0.71612, -0.29957, 0.664743, -0.665379, 0.139772, 0.980707, 0.340482, 0.477162, -0.89294, 0.862045, 0.494623, 0.0867421, 0.69086, 0.498872, -0.817546, -0.812229, -0.29957, 0.664743, 0.670354, -0.198236, 0.980544, -0.36628, 0.260305, 0.819843, -0.576573, -0.38277, -0.956, 0.709535, -0.198454, -0.987613, -0.520593, -0.55812, -0.0632953, 0.727753, 0.168536, 0.331686, -0.727834, -0.553049, -0.122532, -0.715824, 0.503899, -0.063783, 0.733609, 0.257183, 0.841004, 0.514982, 0.201835, -0.988909, -0.521282, 0.387005, -0.958581, 0.711593)
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5fn7"]
+size = Vector3(1.50888, 2.72138, 1)
 
 [sub_resource type="Resource" id="Resource_g8x65"]
 script = ExtResource("5_ix0lt")
@@ -169,8 +169,8 @@ rings = 4
 [node name="PickableObject" groups=["pedestal_object"] instance=ExtResource("1_5l48x")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(0.164679, 0, 0, 0, 0.229475, 0, 0, 0, 0.0731784, -0.0928536, 0.467372, 0.0157616)
-shape = SubResource("ConvexPolygonShape3D_hrrdf")
+transform = Transform3D(0.158009, 0, -0.020616, 0, 0.229475, 0, 0.0463937, 0, 0.0702144, -0.0928536, 0.534727, 0.0157616)
+shape = SubResource("BoxShape3D_d5fn7")
 
 [node name="SprayBottle" parent="." index="1" instance=ExtResource("2_v51ve")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.087331, 0.252877, 0.0144454)
