@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwc1yl87acwhl"]
 
-[ext_resource type="VideoStream" path="res://src/videos/assets/test_video.ogv" id="1_vv6we"]
+[ext_resource type="VideoStream" path="res://src/animations/assets/test_video.ogv" id="1_vv6we"]
 
 [node name="VideoResize" type="AspectRatioContainer"]
 anchors_preset = 15
