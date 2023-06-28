@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://5uwvp5wwjxid"]
+[gd_scene load_steps=5 format=3 uid="uid://5uwvp5wwjxid"]
 
-[ext_resource type="PackedScene" uid="uid://b4pqavv417mka" path="res://src/objects/assets/pedestal.glb" id="1_0fffo"]
+[ext_resource type="PackedScene" uid="uid://cj4uooebdpiis" path="res://src/objects/assets/pedestal.glb" id="1_0fffo"]
 [ext_resource type="PackedScene" uid="uid://dc7kdl2h1uyb6" path="res://src/objects/scenes/pedestal_snap_zone.tscn" id="1_8np3y"]
+[ext_resource type="Script" path="res://src/objects/scenes/pedestal.gd" id="1_bsbc4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gashp"]
 height = 0.744176
 radius = 0.314
 
 [node name="Pedestal" type="StaticBody3D"]
+script = ExtResource("1_bsbc4")
 
 [node name="PedestalMesh" parent="." instance=ExtResource("1_0fffo")]
 transform = Transform3D(0.267, 0, 0, 0, 0.267, 0, 0, 0, 0.267, 0, 0, 0)
@@ -18,3 +20,6 @@ shape = SubResource("CylinderShape3D_gashp")
 
 [node name="SnapZone" parent="." instance=ExtResource("1_8np3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.763421, 0)
+
+[connection signal="has_dropped" from="SnapZone" to="." method="_on_snap_zone_has_dropped"]
+[connection signal="has_picked_up" from="SnapZone" to="." method="_on_snap_zone_has_picked_up"]
