@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://wpyooe40oqia" path="res://src/player/scenes/left_controller.tscn" id="3_0w83j"]
 [ext_resource type="PackedScene" uid="uid://cgij6m84jpu70" path="res://src/player/scenes/right_controller.tscn" id="4_kbx6j"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
-[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://bpybmu2dc8r0u" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
 [ext_resource type="PackedScene" uid="uid://bm7odobqg015g" path="res://src/objects/scenes/pantheon.tscn" id="7_sd6w1"]
 [ext_resource type="PackedScene" uid="uid://w67c0ixxtd3t" path="res://src/objects/scenes/pickable_spray_bottle.tscn" id="9_c7s61"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
@@ -65,7 +65,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27079, -3.65509, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65625, -4.1596, 0)
 
 [node name="Bottle" parent="." instance=ExtResource("9_c7s61")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52659, -3.54511, -0.0363438)
 
 [node name="Viewport2Din3D" parent="." instance=ExtResource("11_xoy8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78614, -2.16912, 0)
