@@ -1,17 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=19 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://foley_test.gd" id="1_qksgx"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_u4ahu"]
 [ext_resource type="PackedScene" uid="uid://wpyooe40oqia" path="res://src/player/scenes/left_controller.tscn" id="3_0w83j"]
+[ext_resource type="PackedScene" uid="uid://x0dhdcschpoy" path="res://src/animations/scenes/intro_storyboard.tscn" id="4_csmq0"]
 [ext_resource type="PackedScene" uid="uid://cgij6m84jpu70" path="res://src/player/scenes/right_controller.tscn" id="4_kbx6j"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
-[ext_resource type="Texture2D" uid="uid://bpybmu2dc8r0u" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
 [ext_resource type="PackedScene" uid="uid://bm7odobqg015g" path="res://src/objects/scenes/pantheon.tscn" id="7_sd6w1"]
 [ext_resource type="PackedScene" uid="uid://w67c0ixxtd3t" path="res://src/objects/scenes/pickable_spray_bottle.tscn" id="9_c7s61"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
 [ext_resource type="PackedScene" uid="uid://5uwvp5wwjxid" path="res://src/objects/scenes/pedestal.tscn" id="10_8v0a3"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="11_xoy8n"]
 [ext_resource type="PackedScene" uid="uid://bwc1yl87acwhl" path="res://src/animations/scenes/test_video.tscn" id="12_2nxx8"]
+[ext_resource type="PackedScene" uid="uid://dkc1a82nqov07" path="res://src/objects/assets/arch.glb" id="14_j7egn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.5, 2, 0.5)
@@ -65,9 +67,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27079, -3.65509, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65625, -4.1596, 0)
 
 [node name="Bottle" parent="." instance=ExtResource("9_c7s61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56831, -3.56449, 0.0216279)
 
 [node name="Viewport2Din3D" parent="." instance=ExtResource("11_xoy8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78614, -2.16912, 0)
 viewport_size = Vector2(1920, 1080)
 scene = ExtResource("12_2nxx8")
+collision_layer = 1048576
+
+[node name="Arch" parent="." instance=ExtResource("14_j7egn")]
+transform = Transform3D(-7.88991e-08, 0, 1.805, 0, 1.805, 0, -1.805, 0, -7.88991e-08, -5.00005, -4.92002, 1.14466)
+
+[node name="Intro" parent="Arch" instance=ExtResource("11_xoy8n")]
+transform = Transform3D(1.6511e-08, 0.00515377, 0.553993, -2.58139e-10, 0.553993, -0.00515377, -0.554017, 2.57984e-10, 1.6511e-08, -0.834125, 2.35437, 0.0660708)
+screen_size = Vector2(3, 6.505)
+viewport_size = Vector2(1536, 2048)
+scene = ExtResource("4_csmq0")
 collision_layer = 1048576

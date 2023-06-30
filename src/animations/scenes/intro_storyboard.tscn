@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://x0dhdcschpoy"]
+
+[ext_resource type="VideoStream" path="res://src/animations/assets/intro_storyboard.ogv" id="1_ejkt4"]
+[ext_resource type="AudioStream" uid="uid://cimjfaw62my8t" path="res://src/animations/assets/intro_storyboard.wav" id="2_mmfdx"]
+
+[node name="VideoResize" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 0.75
+
+[node name="Video" type="VideoStreamPlayer" parent="."]
+layout_mode = 2
+stream = ExtResource("1_ejkt4")
+autoplay = true
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mmfdx")
+volume_db = 0.937
