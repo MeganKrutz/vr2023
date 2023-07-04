@@ -1,27 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwqqvtglx7fed"]
+[gd_scene load_steps=18 format=3 uid="uid://cwqqvtglx7fed"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_vmkkk"]
 [ext_resource type="Animation" uid="uid://m5x2m8x3tcel" path="res://addons/godot-xr-tools/hands/animations/left/Pinch Tight.res" id="3_ie34c"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_yysj3"]
-[ext_resource type="PackedScene" uid="uid://b5criu34n03w5" path="res://src/objects/assets/coin.glb" id="4_2qq6g"]
+[ext_resource type="PackedScene" uid="uid://dfjsfxp8dj84y" path="res://src/objects/assets/coin.glb" id="4_2qq6g"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_m4h4q"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_tokjc"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="7_13aud"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="7_ongao"]
 [ext_resource type="Animation" uid="uid://ca21ej1p3g2yt" path="res://addons/godot-xr-tools/hands/animations/right/Pinch Tight.res" id="7_wanp7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2xksv"]
 height = 0.416879
 radius = 1.76923
-
-[sub_resource type="Resource" id="Resource_7nbtq"]
-script = ExtResource("5_tokjc")
-open_pose = ExtResource("3_ie34c")
-closed_pose = ExtResource("3_ie34c")
-
-[sub_resource type="Resource" id="Resource_ec2vr"]
-script = ExtResource("5_tokjc")
-open_pose = ExtResource("7_wanp7")
-closed_pose = ExtResource("7_wanp7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6efun"]
 shading_mode = 0
@@ -33,26 +24,109 @@ top_radius = 0.51
 bottom_radius = 0.51
 height = 0.144
 
-[node name="PickableObject" instance=ExtResource("1_vmkkk")]
+[sub_resource type="Resource" id="Resource_7nbtq"]
+script = ExtResource("5_tokjc")
+open_pose = ExtResource("3_ie34c")
+closed_pose = ExtResource("3_ie34c")
+
+[sub_resource type="Resource" id="Resource_ec2vr"]
+script = ExtResource("5_tokjc")
+open_pose = ExtResource("7_wanp7")
+closed_pose = ExtResource("7_wanp7")
+
+[sub_resource type="Animation" id="Animation_picek"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoinMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0582242, 0), Vector3(0, 6.22559, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinMesh:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.324371, 0), Vector3(0, -0.174, 0), Vector3(0, -0.324371, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vons8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoinMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0582242, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.324371, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fietb"]
+_data = {
+"RESET": SubResource("Animation_vons8"),
+"spin": SubResource("Animation_picek")
+}
+
+[node name="PickableObject" groups=["pedestal_object"] instance=ExtResource("1_vmkkk")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0.318874, 0)
+transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, -0.000668585, -0.00565561, 0)
 shape = SubResource("CylinderShape3D_2xksv")
 
-[node name="GrabPointLeft" parent="." index="1" instance=ExtResource("3_yysj3")]
-transform = Transform3D(0.9227, 0, 0.38552, 0, 1, 0, -0.38552, 0, 0.9227, -0.0659389, 0.375675, 0.451384)
-hand_pose = SubResource("Resource_7nbtq")
+[node name="CoinMesh" parent="." index="1" instance=ExtResource("4_2qq6g")]
+transform = Transform3D(0.0998305, 0, -0.00581913, 0, 0.1, 0, 0.00581913, 0, 0.0998305, 0, -0.324371, 0)
 
-[node name="GrabPointRight" parent="." index="2" instance=ExtResource("4_m4h4q")]
-transform = Transform3D(0.988793, 0, -0.149294, 0, 1, 0, 0.149294, 0, 0.988793, 0.0681782, 0.370924, 0.439937)
-hand_pose = SubResource("Resource_ec2vr")
-
-[node name="CoinMesh" parent="." index="3" instance=ExtResource("4_2qq6g")]
-transform = Transform3D(0.299492, 0, -0.0174574, 0, 0.3, 0, 0.0174574, 0, 0.299492, 0, -0.649786, 0)
-
-[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4"]
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="2"]
+transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0.00207245, -0.110416, 0)
+visible = false
 script = ExtResource("7_ongao")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0047932, 0.305385, 0)
 mesh = SubResource("CylinderMesh_ohkog")
+
+[node name="GrabPointLeft" parent="." index="3" instance=ExtResource("3_yysj3")]
+transform = Transform3D(0.919657, 0, 0.392723, 0, 1, 0, -0.392723, 0, 0.919657, -0.0605015, -9.50694e-05, 0.116916)
+hand_pose = SubResource("Resource_7nbtq")
+
+[node name="GrabPointRight" parent="." index="4" instance=ExtResource("4_m4h4q")]
+transform = Transform3D(0.964105, 0, -0.265523, 0, 1, 0, 0.265523, 0, 0.964105, 0.0513002, 0, 0.108798)
+hand_pose = SubResource("Resource_ec2vr")
+
+[node name="GrabPointSnap" parent="." index="5" instance=ExtResource("7_13aud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.196929, 0)
+visible = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_fietb")
+}
