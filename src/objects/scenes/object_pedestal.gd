@@ -14,11 +14,6 @@ func _ready():
 	is_ready = true
 	_update_scene()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 # Upon updating the scene in the editor, update variable references.
 func set_scene(new_object_scene: PackedScene) -> void:
 	object_scene = new_object_scene
@@ -37,7 +32,7 @@ func _update_scene() -> void:
 		
 		# If the loaded scene is NOT a pedestal object, do not instantiate it.
 		if not object_node.is_in_group("pedestal_object"):
-			print("(WARNING) object_pedestal: Cannot load non-pickable object atop pedestal.")
+			printerr("object_pedestal: Cannot load node that is not apart of pedestal_object group.")
 			return
 		
 		# After adding the pickable objcet, place it atop pedestal.
