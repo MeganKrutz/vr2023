@@ -6,15 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://x0dhdcschpoy" path="res://src/animations/scenes/intro_storyboard.tscn" id="4_csmq0"]
 [ext_resource type="PackedScene" uid="uid://cgij6m84jpu70" path="res://src/player/scenes/right_controller.tscn" id="4_kbx6j"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
-[ext_resource type="Texture2D" uid="uid://bpybmu2dc8r0u" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="PackedScene" uid="uid://bm7odobqg015g" path="res://src/objects/scenes/pantheon.tscn" id="7_sd6w1"]
-[ext_resource type="PackedScene" uid="uid://w67c0ixxtd3t" path="res://src/objects/scenes/pickable_spray_bottle.tscn" id="9_c7s61"]
+[ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
 [ext_resource type="PackedScene" uid="uid://5uwvp5wwjxid" path="res://src/objects/scenes/pedestal.tscn" id="10_8v0a3"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="11_xoy8n"]
-[ext_resource type="PackedScene" uid="uid://bwc1yl87acwhl" path="res://src/animations/scenes/test_video.tscn" id="12_2nxx8"]
-[ext_resource type="PackedScene" uid="uid://bjbsecuj2np8y" path="res://src/objects/assets/arch.glb" id="14_j7egn"]
+[ext_resource type="Material" uid="uid://dx7knanic8afg" path="res://src/objects/materials/pedestal_material.tres" id="13_7r2do"]
+[ext_resource type="PackedScene" uid="uid://dkc1a82nqov07" path="res://src/objects/assets/arch.glb" id="14_j7egn"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="15_ng2vc"]
+[ext_resource type="PackedScene" uid="uid://b4cee55hnodce" path="res://src/objects/scenes/pickable_bulb.tscn" id="16_iheay"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
@@ -33,6 +33,7 @@ sky = SubResource("Sky_6ggyu")
 script = ExtResource("1_qksgx")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9584, 0, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 0.870639, 0.491922, 0, -0.491922, 0.870639, -0.285168, 4.65404, 8.22228)
@@ -46,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98439, 1.40333, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78295, 1.47702, 0)
 
 [node name="Player" parent="XROrigin3D" instance=ExtResource("5_s8xsf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52041, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1075, 1.52041, 0)
 player_radius = 0.1
 player_height_min = 0.2
 player_height_max = 0.4
@@ -55,10 +56,11 @@ eye_forward_offset = 0.3
 [node name="PlayerCollision" type="CollisionShape3D" parent="XROrigin3D/Player"]
 shape = SubResource("BoxShape3D_bv5lt")
 
-[node name="Pantheon" parent="." instance=ExtResource("7_sd6w1")]
+[node name="Pantheon" parent="." instance=ExtResource("6_0uu4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.02696, 0)
 
 [node name="Spotlight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.994105, 0.0729821, -0.0801856, 0.107479, -0.760804, 0.64002, -0.0142956, -0.644865, -0.764163, -0.0346661, 9.71461, -4.45577)
+transform = Transform3D(0.605592, -0.79573, -0.00845397, -0.368673, -0.289962, 0.883177, -0.705222, -0.531729, -0.468963, 1.67717, 6.93802, -18.3578)
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_23npv")
@@ -67,35 +69,31 @@ environment = SubResource("Environment_23npv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27079, -3.65509, 0)
 
 [node name="Pedestal" parent="." instance=ExtResource("10_8v0a3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65625, -4.1596, 0)
-
-[node name="Bottle" parent="." instance=ExtResource("9_c7s61")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56831, -3.56449, 0.0216279)
-
-[node name="TestVideo" parent="." instance=ExtResource("11_xoy8n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78614, -2.16912, 0)
-viewport_size = Vector2(1920, 1080)
-scene = ExtResource("12_2nxx8")
-collision_layer = 1048576
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.86593, -4.1596, -7.49222)
 
 [node name="Arch" parent="." instance=ExtResource("14_j7egn")]
-transform = Transform3D(-7.88991e-08, 0, 1.805, 0, 1.805, 0, -1.805, 0, -7.88991e-08, -5.00005, -4.92002, 1.14466)
+transform = Transform3D(1.805, 0, 3.55271e-14, 0, 1.805, 0, -3.55271e-14, 0, 1.805, -30.761, -4.92002, 1.14466)
+
+[node name="Plane" parent="Arch" index="0"]
+surface_material_override/0 = ExtResource("13_7r2do")
 
 [node name="Intro" parent="Arch" instance=ExtResource("11_xoy8n")]
-transform = Transform3D(1.6511e-08, 0.00515377, 0.553993, -2.58139e-10, 0.553993, -0.00515377, -0.554017, 2.57984e-10, 1.6511e-08, -0.834125, 2.35437, 0.0660708)
+transform = Transform3D(1.6511e-08, 0.00515377, 0.553993, -2.58139e-10, 0.553993, -0.00515377, -0.554017, 2.57984e-10, 1.6511e-08, -0.834124, 2.35437, 0.0660708)
 screen_size = Vector2(3, 6.505)
 viewport_size = Vector2(1536, 2048)
 scene = ExtResource("4_csmq0")
 collision_layer = 1048576
 
-[node name="SprayPedestal" parent="." instance=ExtResource("15_ng2vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52888, -4.11479, 1.1952)
-object_scene = ExtResource("9_c7s61")
+[node name="BulbPedestal" parent="." instance=ExtResource("15_ng2vc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1243, -3.95743, 1.28302)
+object_scene = ExtResource("16_iheay")
+elevation = 0.75
 
 [node name="CoinPedestal" parent="." instance=ExtResource("15_ng2vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.572, -4.09237, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4389, -4.09237, -5.82427)
 object_scene = ExtResource("9_pwjqj")
 elevation = 1.0
 
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="." method="_on_right_controller_button_pressed"]
-[connection signal="action_pressed" from="SprayPedestal/PickableObject" to="SprayPedestal/PickableObject/SprayParticles" method="_on_pickable_object_action_pressed" flags=18]
+
+[editable path="Arch"]

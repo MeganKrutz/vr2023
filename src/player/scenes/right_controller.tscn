@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgij6m84jpu70"]
 
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="1_irij2"]
-[ext_resource type="Material" uid="uid://duxtmcuanjhur" path="res://src/player/materials/hand.tres" id="2_gv17d"]
+[ext_resource type="Material" uid="uid://bhiiya7ow6h8v" path="res://addons/godot-xr-tools/hands/materials/labglove.material" id="2_lc5x4"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_uagje"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_w5xsx"]
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="4_1k5bc"]
@@ -11,7 +11,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17748, 1.51684, 0)
 tracker = &"right_hand"
 
 [node name="RightHand" parent="." instance=ExtResource("1_irij2")]
-hand_material_override = ExtResource("2_gv17d")
+hand_material_override = ExtResource("2_lc5x4")
 
 [node name="Movement" parent="." instance=ExtResource("2_uagje")]
 strafe = true

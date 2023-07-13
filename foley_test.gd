@@ -1,5 +1,9 @@
 extends Node
 
+# Reference to introductory video upon entering world.
+@onready var video : VideoStreamPlayer = $Arch/Intro.scene_node.get_node("Video")
+var intro_has_played : bool = false
+
 var xr_interface: XRInterface
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +21,7 @@ func _ready():
 
 
 func _on_right_controller_button_pressed(button_name: String):
-	print("Button pressed: ", button_name)
-	# if button_name == "ax_button":
-	#	$TestVideo.enabled = false
+	# print("Button pressed: ", button_name)
+	if button_name == "ax_button" and not intro_has_played:
+		video.play()
+		intro_has_played = true
