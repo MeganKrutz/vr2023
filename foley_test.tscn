@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=22 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://foley_test.gd" id="1_qksgx"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_u4ahu"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bjbsecuj2np8y" path="res://src/objects/assets/arch.glb" id="14_j7egn"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="15_ng2vc"]
 [ext_resource type="PackedScene" uid="uid://b4cee55hnodce" path="res://src/objects/scenes/pickable_bulb.tscn" id="16_iheay"]
+[ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_mvl6i"]
+[ext_resource type="VideoStream" path="res://src/animations/assets/intro_storyboard.ogv" id="17_yjw8l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
@@ -93,6 +95,10 @@ elevation = 0.75
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4389, -4.09237, -5.82427)
 object_scene = ExtResource("9_pwjqj")
 elevation = 1.0
+
+[node name="ArchVideo" parent="." instance=ExtResource("16_mvl6i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.63617, -4.05497, 5.0314)
+stream = ExtResource("17_yjw8l")
 
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="." method="_on_right_controller_button_pressed"]
 

@@ -18,6 +18,8 @@ func _ready():
 		get_viewport().use_xr = true
 	else:
 		print("OpenXR: XR Failed")
+	
+	$ArchVideo.play()
 
 
 func _on_right_controller_button_pressed(button_name: String):
