@@ -1,8 +1,5 @@
 extends Node
 
-# Reference to introductory video upon entering world.
-@onready var video : VideoStreamPlayer = $Arch/Intro.scene_node.get_node("Video")
-
 var intro_has_played : bool = false
 var xr_interface : XRInterface
 
@@ -18,12 +15,10 @@ func _ready():
 		get_viewport().use_xr = true
 	else:
 		print("OpenXR: XR Failed")
-	
-	$ArchVideo.play()
 
 
 func _on_right_controller_button_pressed(button_name: String):
 	# print("Button pressed: ", button_name)
 	if button_name == "ax_button" and not intro_has_played:
-		video.play()
+		$ArchVideo.play()
 		intro_has_played = true

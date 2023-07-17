@@ -4,15 +4,15 @@ extends StaticBody3D
 
 ## Class to enable playing a 2D video inside an arch.
 
-# Video to play inside of arch. Must be of .ogv (Ogg Theora) extension.
-@export var stream : VideoStreamTheora: set = set_arch_video
+## Scene containing unique video to play inside of arch.
+## Use BaseVideo class to generate additional video scenes.
+@export var video_scene : PackedScene: set = set_video_scene
 
-## Set the video to play inside the arch.
-func set_arch_video(new_stream: VideoStreamTheora) -> void:
-	stream = new_stream
-	$BaseVideo.set_video(new_stream)
-	$VideoViewport.scene_node = $BaseVideo
+## Set the video scene to play inside the arch.
+func set_video_scene(new_scene: PackedScene) -> void:
+	video_scene = new_scene
+	$VideoViewport.set_scene(new_scene)
 
 ## Play arch video.
 func play() -> void:
-	$BaseVideo.play()
+	$VideoViewport.scene_node.play()
