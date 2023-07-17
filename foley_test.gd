@@ -2,9 +2,9 @@ extends Node
 
 # Reference to introductory video upon entering world.
 @onready var video : VideoStreamPlayer = $Arch/Intro.scene_node.get_node("Video")
-var intro_has_played : bool = false
 
-var xr_interface: XRInterface
+var intro_has_played : bool = false
+var xr_interface : XRInterface
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
