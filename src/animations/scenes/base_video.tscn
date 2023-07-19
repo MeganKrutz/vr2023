@@ -12,3 +12,5 @@ script = ExtResource("1_2guqr")
 
 [node name="Video" type="VideoStreamPlayer" parent="."]
 layout_mode = 2
+
+[connection signal="finished" from="Video" to="." method="_on_video_finished"]

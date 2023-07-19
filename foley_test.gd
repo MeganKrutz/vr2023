@@ -1,6 +1,5 @@
 extends Node
 
-var intro_has_played : bool = false
 var xr_interface : XRInterface
 
 # Called when the node enters the scene tree for the first time.
@@ -15,10 +14,3 @@ func _ready():
 		get_viewport().use_xr = true
 	else:
 		print("OpenXR: XR Failed")
-
-
-func _on_right_controller_button_pressed(button_name: String):
-	# print("Button pressed: ", button_name)
-	if button_name == "ax_button" and not intro_has_played:
-		$ArchVideo.play()
-		intro_has_played = true

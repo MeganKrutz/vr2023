@@ -1,18 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=23 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://foley_test.gd" id="1_qksgx"]
+[ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_u4ahu"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_0lxao"]
 [ext_resource type="PackedScene" uid="uid://wpyooe40oqia" path="res://src/player/scenes/left_controller.tscn" id="3_0w83j"]
 [ext_resource type="PackedScene" uid="uid://cgij6m84jpu70" path="res://src/player/scenes/right_controller.tscn" id="4_kbx6j"]
+[ext_resource type="PackedScene" uid="uid://d2wvaagg3f6x1" path="res://src/animations/scenes/intro.tscn" id="5_grmiw"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
-[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
-[ext_resource type="PackedScene" uid="uid://5uwvp5wwjxid" path="res://src/objects/scenes/pedestal.tscn" id="10_8v0a3"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="15_ng2vc"]
 [ext_resource type="PackedScene" uid="uid://b4cee55hnodce" path="res://src/objects/scenes/pickable_bulb.tscn" id="16_iheay"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
-[ext_resource type="PackedScene" path="res://src/animations/scenes/intro_storyboard_2.tscn" id="17_6uese"]
+[ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/intro_storyboard_2.tscn" id="17_6uese"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
@@ -26,6 +29,23 @@ sky_material = SubResource("PanoramaSkyMaterial_honiv")
 [sub_resource type="Environment" id="Environment_23npv"]
 background_mode = 2
 sky = SubResource("Sky_6ggyu")
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.15
+fog_density = 0.005
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03qmg"]
+shading_mode = 0
+albedo_texture = ExtResource("8_1hqiw")
+billboard_mode = 1
+proximity_fade_enabled = true
+proximity_fade_distance = 198.6
+distance_fade_mode = 1
+distance_fade_max_distance = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_4ojt0"]
+material = SubResource("StandardMaterial3D_03qmg")
+size = Vector2(125, 125)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_qksgx")
@@ -34,9 +54,17 @@ script = ExtResource("1_qksgx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50039, 0, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 0.870639, 0.491922, 0, -0.491922, 0.870639, -0.285168, 4.65404, 8.22228)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285168, 0.690662, 8.22228)
+script = ExtResource("2_5xxcy")
 
-[node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_u4ahu")]
+[node name="VRShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_u4ahu")]
+
+[node name="Intro" parent="XROrigin3D/XRCamera3D" instance=ExtResource("3_0lxao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.74899)
+visible = false
+screen_size = Vector2(16, 9)
+viewport_size = Vector2(1600, 900)
+scene = ExtResource("5_grmiw")
 
 [node name="LeftController" parent="XROrigin3D" instance=ExtResource("3_0w83j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98439, 1.40333, 0)
@@ -57,30 +85,28 @@ shape = SubResource("BoxShape3D_bv5lt")
 [node name="Pantheon" parent="." instance=ExtResource("6_0uu4j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.02696, 0)
 
+[node name="ArchVideo" parent="Pantheon" instance=ExtResource("16_rwd2b")]
+transform = Transform3D(-0.0128108, 0, -1.99996, 0, 2, 0, 1.99996, 0, -0.0128108, 0.0741081, 0.57549, -36.3606)
+video_scene = ExtResource("17_6uese")
+
+[node name="CoinPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829966, 0.93459, -33.7003)
+object_scene = ExtResource("9_pwjqj")
+elevation = 1.0
+
+[node name="BulbPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181102, 1.06953, -33.7898)
+object_scene = ExtResource("16_iheay")
+elevation = 0.75
+
 [node name="Spotlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.605592, -0.79573, -0.00845397, -0.368673, -0.289962, 0.883177, -0.705222, -0.531729, -0.468963, 1.67717, 6.93802, -18.3578)
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_23npv")
 
-[node name="Coin" parent="." instance=ExtResource("9_pwjqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27079, -3.65509, 0)
+[node name="MouthFog" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54362, 12.4216, 43.9885)
+mesh = SubResource("QuadMesh_4ojt0")
 
-[node name="Pedestal" parent="." instance=ExtResource("10_8v0a3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.86593, -4.1596, -7.49222)
-
-[node name="CoinPedestal" parent="." instance=ExtResource("15_ng2vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4389, -4.09237, -5.82427)
-object_scene = ExtResource("9_pwjqj")
-elevation = 1.0
-
-[node name="ArchVideo" parent="." instance=ExtResource("16_rwd2b")]
-transform = Transform3D(1.99996, 0, -0.0128107, 0, 2, 0, 0.0128107, 0, 1.99996, -6.61858, -4.00095, -0.201344)
-video_scene = ExtResource("17_6uese")
-
-[node name="BulbPedestal" parent="." instance=ExtResource("15_ng2vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1243, -3.95743, -0.71698)
-object_scene = ExtResource("16_iheay")
-elevation = 0.75
-
-[connection signal="button_pressed" from="XROrigin3D/RightController" to="." method="_on_right_controller_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/XRCamera3D" method="_on_right_controller_button_pressed"]
