@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d2wvaagg3f6x1" path="res://src/animations/scenes/intro.tscn" id="5_grmiw"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
-[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="15_ng2vc"]
 [ext_resource type="PackedScene" uid="uid://b4cee55hnodce" path="res://src/objects/scenes/pickable_bulb.tscn" id="16_iheay"]
@@ -20,32 +20,31 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_honiv"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eh0ex"]
 panorama = ExtResource("7_q6bic")
 
 [sub_resource type="Sky" id="Sky_6ggyu"]
-sky_material = SubResource("PanoramaSkyMaterial_honiv")
+sky_material = SubResource("PanoramaSkyMaterial_eh0ex")
 
 [sub_resource type="Environment" id="Environment_23npv"]
 background_mode = 2
 sky = SubResource("Sky_6ggyu")
 fog_enabled = true
-fog_light_color = Color(1, 1, 1, 1)
-fog_light_energy = 0.15
+fog_light_color = Color(0.615686, 0.698039, 1, 1)
+fog_light_energy = 0.3
 fog_density = 0.005
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03qmg"]
 shading_mode = 0
 albedo_texture = ExtResource("8_1hqiw")
-billboard_mode = 1
+billboard_mode = 2
 proximity_fade_enabled = true
-proximity_fade_distance = 198.6
+proximity_fade_distance = 142.6
 distance_fade_mode = 1
-distance_fade_max_distance = 5.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_4ojt0"]
 material = SubResource("StandardMaterial3D_03qmg")
-size = Vector2(125, 125)
+size = Vector2(100, 100)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_qksgx")
@@ -60,7 +59,7 @@ script = ExtResource("2_5xxcy")
 [node name="VRShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_u4ahu")]
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D" instance=ExtResource("3_0lxao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.74899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.84337)
 visible = false
 screen_size = Vector2(16, 9)
 viewport_size = Vector2(1600, 900)
@@ -99,14 +98,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181102, 1.06953, -33.7898)
 object_scene = ExtResource("16_iheay")
 elevation = 0.75
 
-[node name="Spotlight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.605592, -0.79573, -0.00845397, -0.368673, -0.289962, 0.883177, -0.705222, -0.531729, -0.468963, 1.67717, 6.93802, -18.3578)
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SkyLight" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.895789, -0.441575, -0.0507299, -0.145637, -0.399426, 0.905123, -0.419942, -0.803412, -0.422111, 1.85191, 29.6341, -9.7104)
+
+[node name="HeavenlyLight" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -0.970266, -0.24204, 0, 0.24204, -0.970266, 0, 59.9668, -5.74279)
+light_energy = 13.737
+light_indirect_energy = 0.0
+light_specular = 16.0
+spot_range = 108.722
+spot_angle = 48.07
+spot_angle_attenuation = 0.420448
+
+[node name="DomeLight" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.0145381, -0.999894, 0, 0.999894, 0.0145381, 0, -8.13849, -5.74279)
+light_energy = 13.737
+light_indirect_energy = 0.0
+light_specular = 16.0
+spot_range = 117.685
+spot_attenuation = 1.07177
+spot_angle = 36.07
+spot_angle_attenuation = 0.420448
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_23npv")
 
-[node name="MouthFog" type="MeshInstance3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54362, 12.4216, 43.9885)
+[node name="MouthFog" type="Node3D" parent="Background"]
+
+[node name="CenterFog" type="MeshInstance3D" parent="Background/MouthFog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54362, 6.46952, 69.46)
+mesh = SubResource("QuadMesh_4ojt0")
+skeleton = NodePath("../..")
+
+[node name="LeftFog" type="MeshInstance3D" parent="Background/MouthFog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8253, 12.939, 40.8189)
 mesh = SubResource("QuadMesh_4ojt0")
 
+[node name="RightFog" type="MeshInstance3D" parent="Background/MouthFog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4768, 10.4426, 37.4892)
+mesh = SubResource("QuadMesh_4ojt0")
+skeleton = NodePath("../LeftFog")
+
+[node name="HallwayFog" type="MeshInstance3D" parent="Background/MouthFog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216811, 5.27761, 30.2042)
+mesh = SubResource("QuadMesh_4ojt0")
+
+[connection signal="finished" from="XROrigin3D/XRCamera3D" to="." method="_on_xr_camera_3d_finished"]
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/XRCamera3D" method="_on_right_controller_button_pressed"]

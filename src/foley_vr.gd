@@ -12,5 +12,12 @@ func _ready():
 		
 		Engine.physics_ticks_per_second = 90
 		get_viewport().use_xr = true
+		
+		# Disable visibility to make room for 2D GUI.
+		# Visibility is re-enabled once GUI is finished.
+		$Pantheon.visible = false
 	else:
 		print("OpenXR: XR Failed")
+
+func _on_xr_camera_3d_finished():
+	$Pantheon.visible = true
