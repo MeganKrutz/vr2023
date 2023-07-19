@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://o8v3t6xag0xt"]
 
-[ext_resource type="Script" path="res://foley_test.gd" id="1_qksgx"]
+[ext_resource type="Script" path="res://src/foley_vr.gd" id="1_qksgx"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_u4ahu"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_0lxao"]

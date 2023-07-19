@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="FoleyTest"
-run/main_scene="res://foley_test.tscn"
+config/name="Foley VR"
+run/main_scene="res://src/foley_vr.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://src/images/icon.svg"
 
