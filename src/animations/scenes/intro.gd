@@ -1,7 +1,7 @@
 extends AspectRatioContainer
 
 # Whether intro has finished playing out.
-var has_finished : bool = false
+signal finished
 
 # Intro will remove its own visibility after video is finished playing.
 func play_intro() -> void:
@@ -12,7 +12,7 @@ func _on_intro_video_finished():
 	remove_intro()
 
 func remove_intro() -> void:
-	# Make white or black box appear to match end of video.
-	$Rectangle.visible = true
-	has_finished = true
+	# Make white or black box appear to match fadeout of end of video.
+	$FadeRectangle.visible = true
 	$AnimationPlayer.play("gui_fade")
+	emit_signal("finished")

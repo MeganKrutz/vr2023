@@ -76,10 +76,9 @@ This text is placeholder.
 Press B to enter world."
 label_settings = SubResource("LabelSettings_cmbrh")
 
-[node name="Rectangle" type="ColorRect" parent="."]
+[node name="FadeRectangle" type="ColorRect" parent="."]
 visible = false
 layout_mode = 2
-color = Color(0, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
