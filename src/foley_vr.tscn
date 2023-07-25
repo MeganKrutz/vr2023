@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="15_ng2vc"]
 [ext_resource type="PackedScene" uid="uid://b4cee55hnodce" path="res://src/objects/scenes/pickable_bulb.tscn" id="16_iheay"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
-[ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/intro_storyboard_2.tscn" id="17_6uese"]
+[ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/intro_storyboard.tscn" id="17_6uese"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)

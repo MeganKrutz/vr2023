@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c221i7f6xpuk5"]
 
 [ext_resource type="Script" path="res://src/objects/scenes/arch_video.gd" id="1_bese3"]
-[ext_resource type="PackedScene" uid="uid://dkc1a82nqov07" path="res://src/objects/assets/arch.glb" id="1_jqhmt"]
+[ext_resource type="PackedScene" uid="uid://b573py1rykpqw" path="res://src/objects/assets/arch.glb" id="1_jqhmt"]
 [ext_resource type="Material" uid="uid://dx7knanic8afg" path="res://src/objects/materials/pedestal_material.tres" id="2_cwuof"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_8wrx3"]
 
