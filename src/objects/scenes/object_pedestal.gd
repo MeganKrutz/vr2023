@@ -1,28 +1,48 @@
 @tool
 extends Node3D
 
-# Scene of pickable object to load with pedestal.
-@export var object_scene : PackedScene: set = set_scene
+## Scene of pickable object to load with pedestal.
+@export var object_scene : PackedScene: set = _set_scene
 
-# How far elevated on the y-axis the spawned pickable object begin.
-@export var elevation : float = 0.5
+# Object that will be transitioned to the next time the pedestal switches object
+var next_object_scene : PackedScene
 
 var is_ready : bool = false
+
+# Instantiation of the loaded scene.
 var object_node : Node
 
 func _ready():
 	is_ready = true
 	_update_scene()
 
-# Upon updating the scene in the editor, update variable references.
-func set_scene(new_object_scene: PackedScene) -> void:
+## Smoothly Transition from one pickable object scene to another with a shining
+## animation.
+func transition_scene(new_object_scene: PackedScene) -> void:
+	next_object_scene = new_object_scene
+	$AnimationPlayer.play("object_transition")
+
+# Called inside object_transition animation to cause change in object.
+# Changes object scene to the next object scene queued.
+func _transition_to_next_scene() -> void:
+	print("Executed test scene")
+	# If there is no object queued for changing, do nothing.
+	if not next_object_scene:
+		return
+
+	# Change scene and prevent unnecessary reloads on repeat playback.
+	_set_scene(next_object_scene)
+	next_object_scene = null
+
+# Directly change scene to load as pickable object atop pedestal.
+func _set_scene(new_object_scene: PackedScene) -> void:
 	object_scene = new_object_scene
 	if is_ready:
 		_update_scene()
 
-# Update scene to reflect any changes made.
+# Update scene to sync together node and scene references.
 func _update_scene() -> void:
-	# If the instantiated node is not null, immediately refresh it.
+	# If the instantiated node is not null, refresh it.
 	if object_node:
 		remove_child(object_node)
 		object_node.queue_free()
@@ -35,6 +55,6 @@ func _update_scene() -> void:
 			printerr("object_pedestal: Cannot load node that is not apart of pedestal_object group.")
 			return
 		
-		# After adding the pickable objcet, place it atop pedestal.
+		# After adding the pickable objcet, snap it to pedestal.
 		add_child(object_node)
-		$PickableObject.translate(Vector3(0, elevation, 0))
+		$Pedestal/SnapZone.pick_up_object(object_node)

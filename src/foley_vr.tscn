@@ -37,7 +37,7 @@ fog_density = 0.005
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03qmg"]
 shading_mode = 0
 albedo_texture = ExtResource("8_1hqiw")
-billboard_mode = 2
+billboard_mode = 1
 proximity_fade_enabled = true
 proximity_fade_distance = 142.6
 distance_fade_mode = 1
@@ -62,6 +62,7 @@ script = ExtResource("2_5xxcy")
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D/IntroControl" instance=ExtResource("3_0lxao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.84337)
+visible = false
 screen_size = Vector2(16, 9)
 viewport_size = Vector2(1600, 900)
 scene = ExtResource("5_grmiw")
@@ -92,12 +93,10 @@ video_scene = ExtResource("17_6uese")
 [node name="CoinPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829966, 0.93459, -33.7003)
 object_scene = ExtResource("9_pwjqj")
-elevation = 1.0
 
 [node name="BulbPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181102, 1.06953, -33.7898)
 object_scene = ExtResource("16_iheay")
-elevation = 0.75
 
 [node name="Lights" type="Node3D" parent="."]
 

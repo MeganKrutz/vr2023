@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci2kdgc1siiwj"]
+
+[ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="1_htwgf"]
+[ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="2_s46jv"]
+
+[node name="ObjectPedestal" instance=ExtResource("1_htwgf")]
+object_scene = ExtResource("2_s46jv")
