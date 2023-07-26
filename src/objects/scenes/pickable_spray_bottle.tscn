@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://w67c0ixxtd3t"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_5l48x"]
-[ext_resource type="PackedScene" uid="uid://cgrsmbwfej6hs" path="res://src/objects/assets/spray_bottle.glb" id="2_v51ve"]
+[ext_resource type="PackedScene" uid="uid://3vqn7s3fuweo" path="res://src/objects/assets/spray_bottle.glb" id="2_v51ve"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_ospwm"]
 [ext_resource type="Animation" uid="uid://ddbo6ioa282en" path="res://addons/godot-xr-tools/hands/animations/left/Pistol.res" id="4_p0rc6"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_ix0lt"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="6_i2t7u"]
 [ext_resource type="Animation" uid="uid://csp3fdknowmi5" path="res://addons/godot-xr-tools/hands/animations/right/Pistol.res" id="7_4hnqg"]
 [ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="8_qpf4s"]
-[ext_resource type="Material" path="res://src/objects/materials/yellow_highlight.tres" id="9_hj0e2"]
+[ext_resource type="Material" uid="uid://bvag4leblcbv0" path="res://src/objects/materials/yellow_highlight.tres" id="9_hj0e2"]
 [ext_resource type="Script" path="res://src/objects/scenes/spray_particles.gd" id="11_rfu8i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d5fn7"]
@@ -239,6 +239,7 @@ shape = SubResource("BoxShape3D_d5fn7")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.087331, 0.252877, 0.0144454)
 
 [node name="XRToolsHighlightVisible" type="Node3D" parent="." index="2"]
+visible = false
 script = ExtResource("6_i2t7u")
 
 [node name="BottleHighlight" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0"]

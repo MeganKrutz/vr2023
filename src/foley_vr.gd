@@ -3,6 +3,8 @@ extends Node
 # Reference to introduction packed scene as an instantiatated control node.
 var intro : AspectRatioContainer
 
+var test_transition : PackedScene = load("res://src/objects/scenes/pickable_coin.tscn")
+
 var xr_interface : XRInterface
 
 # Called when the node enters the scene tree for the first time.
@@ -34,3 +36,8 @@ func setup_xr() -> void:
 # Called when introduction video finishes playing.
 func _on_intro_finished() -> void:
 	$Pantheon.visible = true
+
+
+func _on_right_controller_button_pressed(name: String):
+	if name == "ax_button":
+		$Pantheon/BulbPedestal.transition_scene(test_transition)
