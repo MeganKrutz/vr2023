@@ -1,7 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci2kdgc1siiwj"]
+[gd_scene load_steps=8 format=3 uid="uid://ci2kdgc1siiwj"]
 
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="1_htwgf"]
-[ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="2_s46jv"]
+[ext_resource type="PackedScene" uid="uid://c551ov1gwuaew" path="res://src/objects/scenes/pickables/pickable_brain.tscn" id="2_d1hv7"]
+[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="3_8pynt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23lo3"]
+resource_local_to_scene = true
+blend_mode = 1
+diffuse_mode = 2
+albedo_texture = ExtResource("3_8pynt")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+refraction_scale = -1.0
+billboard_mode = 1
+proximity_fade_enabled = true
+proximity_fade_distance = 0.5
+distance_fade_mode = 1
+distance_fade_max_distance = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_w4ppy"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_23lo3")
+size = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ycdy"]
+resource_local_to_scene = true
+transparency = 1
+diffuse_mode = 2
+albedo_color = Color(1, 1, 1, 0)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7v2lu"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_5ycdy")
+radius = 0.001
+height = 0.001
 
 [node name="ObjectPedestal" instance=ExtResource("1_htwgf")]
-object_scene = ExtResource("2_s46jv")
+object_scene = ExtResource("2_d1hv7")
+
+[node name="Blur" parent="Shine" index="0"]
+mesh = SubResource("QuadMesh_w4ppy")
+
+[node name="SphereCover" parent="Shine" index="1"]
+mesh = SubResource("SphereMesh_7v2lu")

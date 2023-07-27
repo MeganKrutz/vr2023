@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://quwb7t0ragm2"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_o8smd"]
+[ext_resource type="PackedScene" uid="uid://bj1vmtbsr0xxm" path="res://src/objects/assets/pickables/handshake.glb" id="2_31wgo"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_tq3hg"]
+[ext_resource type="Animation" uid="uid://bediglpx0rj7i" path="res://addons/godot-xr-tools/hands/animations/left/Grip 5.res" id="4_0dalx"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_javkl"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_0kwor"]
+[ext_resource type="Animation" uid="uid://s1vqcxyqcvea" path="res://addons/godot-xr-tools/hands/animations/right/Grip 5.res" id="7_vf4h7"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="8_0cn4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nivmx"]
+size = Vector3(0.337824, 0.191426, 0.0768503)
+
+[sub_resource type="Resource" id="Resource_mfdf0"]
+script = ExtResource("5_javkl")
+open_pose = ExtResource("4_0dalx")
+closed_pose = ExtResource("4_0dalx")
+
+[sub_resource type="Resource" id="Resource_4nx7u"]
+script = ExtResource("5_javkl")
+open_pose = ExtResource("7_vf4h7")
+closed_pose = ExtResource("7_vf4h7")
+
+[sub_resource type="Animation" id="Animation_kasct"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandshakeMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 7.85398, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandshakeMesh:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -7.45058e-09, 0), Vector3(0, 0.125, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wk13o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandshakeMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandshakeMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -7.45058e-09, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hi58e"]
+_data = {
+"RESET": SubResource("Animation_wk13o"),
+"spin": SubResource("Animation_kasct")
+}
+
+[node name="PickableHandshake" groups=["pedestal_object"] instance=ExtResource("1_o8smd")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0980128, 0.00962819)
+shape = SubResource("BoxShape3D_nivmx")
+
+[node name="HandshakeMesh" parent="." index="1" instance=ExtResource("2_31wgo")]
+transform = Transform3D(-4.80825e-09, 0, 0.11, 0, 0.11, 0, -0.11, 0, -4.80825e-09, 0, -7.45058e-09, 0)
+
+[node name="GrabPointLeft" parent="." index="2" instance=ExtResource("3_tq3hg")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.053263, -0.0252527, -0.0444697)
+hand_pose = SubResource("Resource_mfdf0")
+editor_preview_mode = 1
+
+[node name="GrabPointRight" parent="." index="3" instance=ExtResource("6_0kwor")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0401569, -0.0260465, -0.0652647)
+hand_pose = SubResource("Resource_4nx7u")
+editor_preview_mode = 1
+
+[node name="GrabPointSnap" parent="." index="4" instance=ExtResource("8_0cn4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0215685, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_hi58e")
+}
+
+[editable path="HandshakeMesh"]

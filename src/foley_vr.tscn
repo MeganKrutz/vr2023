@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://d2wvaagg3f6x1" path="res://src/animations/scenes/intro.tscn" id="5_grmiw"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
-[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
-[ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickable_coin.tscn" id="9_pwjqj"]
+[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="Script" path="res://src/objects/scenes/transition_object_control.gd" id="10_qgd3d"]
+[ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickables/pickable_coin.tscn" id="13_3xmox"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="15_ng2vc"]
-[ext_resource type="PackedScene" uid="uid://b4cee55hnodce" path="res://src/objects/scenes/pickable_bulb.tscn" id="16_iheay"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
 [ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/intro_storyboard.tscn" id="17_6uese"]
 
@@ -62,6 +62,7 @@ script = ExtResource("2_5xxcy")
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D/IntroControl" instance=ExtResource("3_0lxao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.84337)
+visible = false
 screen_size = Vector2(16, 9)
 viewport_size = Vector2(1600, 900)
 scene = ExtResource("5_grmiw")
@@ -84,18 +85,15 @@ shape = SubResource("BoxShape3D_bv5lt")
 
 [node name="Pantheon" parent="." instance=ExtResource("6_0uu4j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.02696, 0)
+script = ExtResource("10_qgd3d")
 
 [node name="ArchVideo" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(-0.0128108, 0, -1.99996, 0, 2, 0, 1.99996, 0, -0.0128108, 0.0741081, 0.57549, -36.3606)
 video_scene = ExtResource("17_6uese")
 
-[node name="CoinPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829966, 0.93459, -33.7003)
-object_scene = ExtResource("9_pwjqj")
-
-[node name="BulbPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
+[node name="ArchPedestal" parent="Pantheon" instance=ExtResource("15_ng2vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181102, 1.06953, -33.7898)
-object_scene = ExtResource("16_iheay")
+object_scene = ExtResource("13_3xmox")
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -144,5 +142,5 @@ skeleton = NodePath("../LeftFog")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216811, 5.27761, 30.2042)
 mesh = SubResource("QuadMesh_4ojt0")
 
-[connection signal="button_pressed" from="XROrigin3D/RightController" to="." method="_on_right_controller_button_pressed"]
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/XRCamera3D/IntroControl" method="_on_right_controller_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="Pantheon" method="_on_right_controller_button_pressed"]
