@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://gjqlvc1ssxjd"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_7mske"]
-[ext_resource type="PackedScene" uid="uid://vigdyyb6sjnj" path="res://src/objects/assets/pickables/star.glb" id="2_khci4"]
+[ext_resource type="PackedScene" uid="uid://dfmkhi8swhbml" path="res://src/objects/assets/pickables/star.glb" id="2_khci4"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_bg5be"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="3_flxf1"]
 [ext_resource type="Animation" uid="uid://bediglpx0rj7i" path="res://addons/godot-xr-tools/hands/animations/left/Grip 5.res" id="4_2ncnx"]
@@ -133,27 +133,29 @@ _data = {
 [node name="PickableStar" groups=["pedestal_object"] instance=ExtResource("1_7mske")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(-5.87918e-08, 0, 1, 0, 1.055, 0, -1.345, 0, -4.37114e-08, 0, 0.107663, 0.00250817)
+transform = Transform3D(1.345, 0, 0, 0, 1.055, 0, 0, 0, 1, 0, 0.107663, 0.00250817)
 shape = SubResource("BoxShape3D_0lwxx")
 
 [node name="StarMesh" parent="." index="1" instance=ExtResource("2_khci4")]
 transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0)
 
 [node name="XRToolsHighlight" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000803441, -0.00464205)
+visible = false
 script = ExtResource("3_flxf1")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlight" index="0"]
-transform = Transform3D(-2.56662e-09, -0.00596604, 0.0405636, -3.812e-10, 0.0405636, 0.00596604, -0.06, -2.5053e-12, -1.77309e-09, -0.00760253, 0.0724434, 0)
+transform = Transform3D(0.06, 0, 0, 0, 0.0405602, 0.0059894, 0, -0.0059894, 0.0405602, 0.00103062, 0.0724434, 0)
 mesh = SubResource("ArrayMesh_gb5ak")
 surface_material_override/0 = SubResource("StandardMaterial3D_jedxu")
 
 [node name="GrabPointLeft" parent="." index="3" instance=ExtResource("3_bg5be")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0686702, -0.0595695, -0.0697561)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -0.0623935, -0.0415876, 0.0344935)
 hand_pose = SubResource("Resource_e4vl5")
 editor_preview_mode = 1
 
 [node name="GrabPointRight" parent="." index="4" instance=ExtResource("6_yid1q")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0436172, -0.0432274, -0.0638109)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.0571131, -0.0432274, -0.0575175)
 hand_pose = SubResource("Resource_1o2ai")
 editor_preview_mode = 1
 

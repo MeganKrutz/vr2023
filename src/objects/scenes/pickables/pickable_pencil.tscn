@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://c7u5ch5nl1adk"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_ermmq"]
-[ext_resource type="PackedScene" uid="uid://qbyyu501qagm" path="res://src/objects/assets/pickables/pencil.glb" id="2_eakdt"]
+[ext_resource type="PackedScene" uid="uid://b2wh3jugi6c27" path="res://src/objects/assets/pickables/pencil.glb" id="2_eakdt"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_n8cl4"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="3_nvgde"]
 [ext_resource type="Material" uid="uid://x4p7bixjyawi" path="res://src/objects/materials/white_highlight.tres" id="4_qn5sq"]
@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="8_hgrd5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mu3ie"]
-height = 0.305894
-radius = 0.013
+height = 0.312801
+radius = 0.017
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpo5x"]
 resource_name = "pencilbody"
@@ -235,7 +235,7 @@ _data = {
 [node name="PickablePencil" groups=["pedestal_object"] instance=ExtResource("1_ermmq")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(0.977043, 0.0759693, 0.200127, -0.158015, 0.913679, 0.450779, -0.142891, -0.490936, 0.869912, 8.08679e-05, 0.140105, 0.000604548)
+transform = Transform3D(0.977043, 0.0759693, 0.200127, -0.158015, 0.913679, 0.450779, -0.142891, -0.490936, 0.869912, 0.000264487, 0.140105, 0.000604548)
 shape = SubResource("CylinderShape3D_mu3ie")
 
 [node name="PencilMesh" parent="." index="1" instance=ExtResource("2_eakdt")]
@@ -246,7 +246,7 @@ visible = false
 script = ExtResource("3_nvgde")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlight" index="0"]
-transform = Transform3D(0.00983392, 0.0149857, 0.00151523, -0.00159172, 0.13138, 0.00455545, -0.000872027, -0.0708146, 0.00877223, -0.00157663, 0.13659, 0.00178893)
+transform = Transform3D(0.00983392, 0.0154852, 0.00151523, -0.00159172, 0.135759, 0.00455545, -0.000872027, -0.0731751, 0.00877223, -0.00157663, 0.13659, 0.00178893)
 mesh = SubResource("ArrayMesh_ke6ia")
 surface_material_override/0 = ExtResource("4_qn5sq")
 surface_material_override/1 = ExtResource("4_qn5sq")
