@@ -13,7 +13,7 @@ var object_scenes : Array[PackedScene] = [coin, bulb, brain, pencil, star, hand]
 var object_index : int = 0
 
 func _on_right_controller_button_pressed(button_name: String):
-	if button_name != "secondary_click":
+	if button_name != "ax_button":
 		return
 	
 	# Increment index of object to be next shown and loop over if index exceeds bounds.

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="1_htwgf"]
 [ext_resource type="PackedScene" uid="uid://c551ov1gwuaew" path="res://src/objects/scenes/pickables/pickable_brain.tscn" id="2_d1hv7"]
-[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="3_8pynt"]
+[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="3_8pynt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23lo3"]
 resource_local_to_scene = true

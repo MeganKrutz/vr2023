@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://c7u5ch5nl1adk"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_ermmq"]
-[ext_resource type="PackedScene" uid="uid://b2wh3jugi6c27" path="res://src/objects/assets/pickables/pencil.glb" id="2_eakdt"]
+[ext_resource type="PackedScene" uid="uid://qbyyu501qagm" path="res://src/objects/assets/pickables/pencil.glb" id="2_eakdt"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_n8cl4"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="3_nvgde"]
 [ext_resource type="Material" uid="uid://x4p7bixjyawi" path="res://src/objects/materials/white_highlight.tres" id="4_qn5sq"]
@@ -170,6 +170,33 @@ script = ExtResource("5_et2me")
 open_pose = ExtResource("7_ug86k")
 closed_pose = ExtResource("7_ug86k")
 
+[sub_resource type="Animation" id="Animation_wi0y5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PencilMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PencilMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_iujjr"]
 resource_name = "spin"
 length = 4.0
@@ -199,33 +226,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_wi0y5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PencilMesh:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PencilMesh:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57bu4"]
 _data = {
 "RESET": SubResource("Animation_wi0y5"),
@@ -235,7 +235,7 @@ _data = {
 [node name="PickablePencil" groups=["pedestal_object"] instance=ExtResource("1_ermmq")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(0.983419, 0.0993261, 0.151726, -0.158687, 0.876304, 0.454874, -0.0877775, -0.471409, 0.877536, -0.00305719, 0.140105, -0.00433784)
+transform = Transform3D(0.977043, 0.0759693, 0.200127, -0.158015, 0.913679, 0.450779, -0.142891, -0.490936, 0.869912, 8.08679e-05, 0.140105, 0.000604548)
 shape = SubResource("CylinderShape3D_mu3ie")
 
 [node name="PencilMesh" parent="." index="1" instance=ExtResource("2_eakdt")]

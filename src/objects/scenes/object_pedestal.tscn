@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/objects/scenes/object_pedestal.gd" id="1_vh5pf"]
 [ext_resource type="PackedScene" uid="uid://5uwvp5wwjxid" path="res://src/objects/scenes/pedestal.tscn" id="2_jgi0s"]
-[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="3_ifjrv"]
+[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="3_ifjrv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7bq1"]
 resource_local_to_scene = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://gjqlvc1ssxjd"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_7mske"]
-[ext_resource type="PackedScene" uid="uid://dfmkhi8swhbml" path="res://src/objects/assets/star.glb" id="2_khci4"]
+[ext_resource type="PackedScene" uid="uid://vigdyyb6sjnj" path="res://src/objects/assets/pickables/star.glb" id="2_khci4"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_bg5be"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="3_flxf1"]
 [ext_resource type="Animation" uid="uid://bediglpx0rj7i" path="res://addons/godot-xr-tools/hands/animations/left/Grip 5.res" id="4_2ncnx"]
@@ -68,6 +68,33 @@ script = ExtResource("5_uh4ue")
 open_pose = ExtResource("7_wawag")
 closed_pose = ExtResource("7_wawag")
 
+[sub_resource type="Animation" id="Animation_1gvet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../StarMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../StarMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_x2yby"]
 resource_name = "spin"
 length = 4.0
@@ -97,33 +124,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_1gvet"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../StarMesh:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../StarMesh:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_grtg5"]
 _data = {
 "RESET": SubResource("Animation_1gvet"),
@@ -133,14 +133,13 @@ _data = {
 [node name="PickableStar" groups=["pedestal_object"] instance=ExtResource("1_7mske")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.107663, -0.00257775)
+transform = Transform3D(-5.87918e-08, 0, 1, 0, 1.055, 0, -1.345, 0, -4.37114e-08, 0, 0.107663, 0.00250817)
 shape = SubResource("BoxShape3D_0lwxx")
 
 [node name="StarMesh" parent="." index="1" instance=ExtResource("2_khci4")]
 transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0)
 
 [node name="XRToolsHighlight" type="Node3D" parent="." index="2"]
-visible = false
 script = ExtResource("3_flxf1")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlight" index="0"]

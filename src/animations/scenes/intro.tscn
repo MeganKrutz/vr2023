@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://h338mixqwcp5" path="res://src/animations/scenes/base_video.tscn" id="1_1vfkl"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro.gd" id="1_hyth7"]
-[ext_resource type="VideoStream" path="res://src/animations/assets/welcome.ogv" id="3_5lng5"]
+[ext_resource type="VideoStream" path="res://src/animations/assets/intro.ogv" id="3_br0aa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cmbrh"]
 font_size = 111
@@ -58,7 +58,7 @@ script = ExtResource("1_hyth7")
 
 [node name="IntroVideo" parent="." instance=ExtResource("1_1vfkl")]
 layout_mode = 2
-video = ExtResource("3_5lng5")
+video = ExtResource("3_br0aa")
 
 [node name="GUI" type="ColorRect" parent="."]
 layout_mode = 2
