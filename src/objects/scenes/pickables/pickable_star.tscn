@@ -131,6 +131,7 @@ _data = {
 }
 
 [node name="PickableStar" groups=["pedestal_object"] instance=ExtResource("1_7mske")]
+ranged_grab_method = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1.345, 0, 0, 0, 1.055, 0, 0, 0, 1, 0, 0.107663, 0.00250817)

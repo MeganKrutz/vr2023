@@ -65,6 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.84337)
 screen_size = Vector2(16, 9)
 viewport_size = Vector2(1600, 900)
 scene = ExtResource("5_grmiw")
+collision_layer = 1048576
 
 [node name="LeftController" parent="XROrigin3D" instance=ExtResource("3_0w83j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98439, 1.40333, 0)
@@ -76,7 +77,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78295, 1.47702, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1075, -1.47959, 20)
 player_radius = 0.1
 player_height_min = 0.2
-player_height_max = 0.4
 eye_forward_offset = 0.3
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="XROrigin3D/Player"]

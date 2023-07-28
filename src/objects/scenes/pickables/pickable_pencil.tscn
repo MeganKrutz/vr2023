@@ -233,6 +233,7 @@ _data = {
 }
 
 [node name="PickablePencil" groups=["pedestal_object"] instance=ExtResource("1_ermmq")]
+ranged_grab_method = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(0.977043, 0.0759693, 0.200127, -0.158015, 0.913679, 0.450779, -0.142891, -0.490936, 0.869912, 0.000264487, 0.140105, 0.000604548)

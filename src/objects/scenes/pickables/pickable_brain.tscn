@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://c551ov1gwuaew"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_vg3si"]
-[ext_resource type="PackedScene" uid="uid://brrddea8bhwq5" path="res://src/objects/assets/pickables/brain/brain.glb" id="2_85alw"]
+[ext_resource type="PackedScene" uid="uid://dqkva6jmqba8l" path="res://src/objects/assets/pickables/brain/brain.glb" id="2_85alw"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_dhgn6"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="3_u6yg1"]
 [ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="4_1n74h"]
@@ -128,6 +128,7 @@ _data = {
 }
 
 [node name="PickableBrain" groups=["pedestal_object"] instance=ExtResource("1_vg3si")]
+ranged_grab_method = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.19651, 0.00601397)
