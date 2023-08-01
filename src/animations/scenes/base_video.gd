@@ -17,9 +17,16 @@ func set_video(new_video: VideoStreamTheora) -> void:
 	video = new_video
 	$Video.set_stream(new_video)
 
+
 ## Play the loaded video stream from the beginning.
 func play() -> void:
 	$Video.play()
+
+
+## Obtain the current playback time of the video, in seconds.
+func get_video_time() -> float:
+	return $Video.get_stream_position()
+
 
 func _on_video_finished():
 	emit_signal("finished")

@@ -19,4 +19,4 @@ func _on_right_controller_button_pressed(button_name: String):
 	# Increment index of object to be next shown and loop over if index exceeds bounds.
 	object_index += 1
 	object_index %= object_scenes.size()
-	$ArchPedestal.transition_scene(object_scenes[object_index])
+	$ArchVideo/ObjectPedestal.transition_scene(object_scenes[object_index])
