@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c221i7f6xpuk5"]
+[gd_scene load_steps=10 format=3 uid="uid://c221i7f6xpuk5"]
 
 [ext_resource type="Script" path="res://src/objects/scenes/arch_video.gd" id="1_bese3"]
-[ext_resource type="PackedScene" uid="uid://b573py1rykpqw" path="res://src/objects/assets/arch.glb" id="1_jqhmt"]
+[ext_resource type="PackedScene" uid="uid://dkc1a82nqov07" path="res://src/objects/assets/arch.glb" id="1_jqhmt"]
 [ext_resource type="Material" uid="uid://dx7knanic8afg" path="res://src/objects/materials/pedestal_material.tres" id="2_cwuof"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_8wrx3"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="5_n4vrt"]
@@ -13,6 +13,9 @@ data = PackedVector3Array(0.6287, 0, -0.5, -0.2121, -0.5122, -0.5, -0.2121, 0, -
 [sub_resource type="QuadMesh" id="QuadMesh_i4r5c"]
 resource_local_to_scene = true
 size = Vector2(0.4, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1p8jm"]
+size = Vector3(2.6298, 4, 2.39229)
 
 [node name="ArchVideo" type="StaticBody3D"]
 script = ExtResource("1_bese3")
@@ -36,14 +39,26 @@ viewport_size = Vector2(1536, 2048)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.759862, 0, 0)
 
 [node name="HoldButton" parent="." instance=ExtResource("6_jq6kp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.12122, 0.506021, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.07361, 1.00034, -0.00826433)
+enabled = true
 size = Vector2(0.4, 0.4)
 
 [node name="Visualise" parent="HoldButton" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00163567, -0.156616, 0)
 mesh = SubResource("QuadMesh_i4r5c")
 
+[node name="ButtonSensor" type="Area3D" parent="HoldButton"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.00826433, -1.00034, -0.148053)
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoldButton/ButtonSensor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281791, 1.70477, 0)
+shape = SubResource("BoxShape3D_1p8jm")
+
 [connection signal="pressed" from="HoldButton" to="." method="_on_hold_button_pressed"]
+[connection signal="body_entered" from="HoldButton/ButtonSensor" to="HoldButton" method="_on_button_sensor_body_entered"]
+[connection signal="body_exited" from="HoldButton/ButtonSensor" to="HoldButton" method="_on_button_sensor_body_exited"]
 
 [editable path="Arch"]
 [editable path="HoldButton"]

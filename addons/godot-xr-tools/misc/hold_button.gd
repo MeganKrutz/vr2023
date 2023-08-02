@@ -25,6 +25,8 @@ var time_held = 0.0
 
 var material : ShaderMaterial
 
+var player_present : bool = false
+
 
 # Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
@@ -56,11 +58,12 @@ func _process(delta):
 		if tracker.get_input(activate_action):
 			button_pressed = true
 
-	if button_pressed:
+	if button_pressed and player_present:
 		_set_time_held(time_held + delta)
 		if time_held > hold_time:
 			# done, disable this
-			set_enabled(false)
+			#set_enabled(false)
+			_set_time_held(0)
 			emit_signal("pressed")
 	else:
 		_set_time_held(max(0.0, time_held - delta))
@@ -107,3 +110,16 @@ func set_color(p_color: Color):
 func _update_color():
 	if material:
 		material.set_shader_parameter("albedo", color)
+
+# A button to an arch video can only be activated if the player is in front
+# of the arch.
+func _on_button_sensor_body_entered(body: Node3D):
+	if body is XRToolsPlayerBody:
+		player_present = true
+		print("Entered!")
+
+
+func _on_button_sensor_body_exited(body: Node3D):
+	if body is XRToolsPlayerBody:
+		player_present = false
+		print("Exited!")

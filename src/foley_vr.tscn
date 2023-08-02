@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=27 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://src/foley_vr.gd" id="1_qksgx"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
@@ -9,14 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://d2wvaagg3f6x1" path="res://src/animations/scenes/intro.tscn" id="5_grmiw"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
-[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="Script" path="res://src/player/scenes/left_controller.gd" id="7_f3aav"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="8_i6ppy"]
-[ext_resource type="Script" path="res://src/objects/scenes/transition_object_control.gd" id="10_qgd3d"]
+[ext_resource type="Script" path="res://src/player/scenes/right_controller.gd" id="8_wfild"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickables/pickable_coin.tscn" id="13_1cm6l"]
 [ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/tutor.tscn" id="13_km0jf"]
 [ext_resource type="PackedScene" uid="uid://c551ov1gwuaew" path="res://src/objects/scenes/pickables/pickable_brain.tscn" id="14_5xj7f"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
+[ext_resource type="PackedScene" uid="uid://gjqlvc1ssxjd" path="res://src/objects/scenes/pickables/pickable_star.tscn" id="16_xedbe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
@@ -74,30 +76,28 @@ collision_layer = 1048576
 
 [node name="LeftController" parent="XROrigin3D" instance=ExtResource("3_0w83j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98439, 1.40333, 0)
+script = ExtResource("7_f3aav")
 
 [node name="RightController" parent="XROrigin3D" instance=ExtResource("4_kbx6j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78295, 1.47702, 0)
+script = ExtResource("8_wfild")
 
 [node name="FootstepDetector" parent="XROrigin3D" instance=ExtResource("8_i6ppy")]
 
 [node name="Player" parent="XROrigin3D" instance=ExtResource("5_s8xsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1075, -1.47959, 20)
-player_radius = 0.1
-player_height_min = 0.2
-eye_forward_offset = 0.3
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="XROrigin3D/Player"]
 shape = SubResource("BoxShape3D_bv5lt")
 
 [node name="Pantheon" parent="." instance=ExtResource("6_0uu4j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.02696, 0)
-script = ExtResource("10_qgd3d")
 
 [node name="ArchVideo" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(1.13247e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.13247e-07, 4.67003, 0.708752, -35.7204)
 video_scene = ExtResource("13_km0jf")
-time_keys = Array[int]([10])
-object_values = Array[PackedScene]([ExtResource("13_1cm6l")])
+time_keys = Array[int]([10, 20])
+object_values = Array[PackedScene]([ExtResource("13_1cm6l"), ExtResource("16_xedbe")])
 
 [node name="VideoViewport" parent="Pantheon/ArchVideo" index="2"]
 scene = ExtResource("13_km0jf")
@@ -157,6 +157,8 @@ mesh = SubResource("QuadMesh_4ojt0")
 
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/XRCamera3D/IntroControl" method="_on_right_controller_button_pressed"]
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="Pantheon" method="_on_right_controller_button_pressed"]
+[connection signal="object_changed" from="Pantheon/ArchVideo/ObjectPedestal" to="XROrigin3D/LeftController" method="_on_object_pedestal_object_changed"]
+[connection signal="object_changed" from="Pantheon/ArchVideo/ObjectPedestal" to="XROrigin3D/RightController" method="_on_object_pedestal_object_changed"]
 
 [editable path="Pantheon/ArchVideo"]
 [editable path="Pantheon/ArchVideo/Arch"]
