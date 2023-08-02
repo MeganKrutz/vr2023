@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=25 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://src/foley_vr.gd" id="1_qksgx"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
@@ -11,11 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
 [ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
 [ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="8_i6ppy"]
 [ext_resource type="Script" path="res://src/objects/scenes/transition_object_control.gd" id="10_qgd3d"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickables/pickable_coin.tscn" id="13_1cm6l"]
+[ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/tutor.tscn" id="13_km0jf"]
 [ext_resource type="PackedScene" uid="uid://c551ov1gwuaew" path="res://src/objects/scenes/pickables/pickable_brain.tscn" id="14_5xj7f"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
-[ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/intro_storyboard.tscn" id="17_6uese"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
@@ -77,6 +78,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98439, 1.40333, 0)
 [node name="RightController" parent="XROrigin3D" instance=ExtResource("4_kbx6j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78295, 1.47702, 0)
 
+[node name="FootstepDetector" parent="XROrigin3D" instance=ExtResource("8_i6ppy")]
+
 [node name="Player" parent="XROrigin3D" instance=ExtResource("5_s8xsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1075, -1.47959, 20)
 player_radius = 0.1
@@ -92,12 +95,12 @@ script = ExtResource("10_qgd3d")
 
 [node name="ArchVideo" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(1.13247e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.13247e-07, 4.67003, 0.708752, -35.7204)
-video_scene = ExtResource("17_6uese")
+video_scene = ExtResource("13_km0jf")
 time_keys = Array[int]([10])
 object_values = Array[PackedScene]([ExtResource("13_1cm6l")])
 
 [node name="VideoViewport" parent="Pantheon/ArchVideo" index="2"]
-scene = ExtResource("17_6uese")
+scene = ExtResource("13_km0jf")
 
 [node name="ObjectPedestal" parent="Pantheon/ArchVideo" index="3"]
 object_scene = ExtResource("14_5xj7f")

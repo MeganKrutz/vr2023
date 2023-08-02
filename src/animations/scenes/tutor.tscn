@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp140hspkrypt"]
+
+[ext_resource type="PackedScene" uid="uid://h338mixqwcp5" path="res://src/animations/scenes/base_video.tscn" id="1_01mtv"]
+[ext_resource type="VideoStream" path="res://src/animations/assets/tutor.ogv" id="2_gsuan"]
+
+[node name="BaseVideo" instance=ExtResource("1_01mtv")]
+video = ExtResource("2_gsuan")
+
+[node name="Video" parent="." index="0"]
+stream = ExtResource("2_gsuan")
