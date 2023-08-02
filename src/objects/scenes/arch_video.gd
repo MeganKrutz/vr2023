@@ -26,7 +26,7 @@ extends StaticBody3D
 # otherwise time_mapping will be an empty dictionary.
 var time_mapping : Dictionary = {}
 
-# Instantiation of the selected view scene.
+## Instantiation of the selected video scene.
 @onready var video_node : BaseVideo = $VideoViewport.scene_node
 
 func _ready() -> void:
@@ -61,3 +61,8 @@ func set_video_scene(new_scene: PackedScene) -> void:
 ## Play arch video.
 func play() -> void:
 	$VideoViewport.scene_node.play()
+
+
+# When the button in front of the pedestal is pressed, play the video.
+func _on_hold_button_pressed():
+	play()
