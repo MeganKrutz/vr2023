@@ -68,9 +68,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285168, 0.690662, 8.22228)
 script = ExtResource("2_5xxcy")
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D/IntroControl" instance=ExtResource("3_0lxao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.84337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.6862)
 screen_size = Vector2(16, 9)
-viewport_size = Vector2(1600, 900)
+viewport_size = Vector2(1800, 1100)
 scene = ExtResource("5_grmiw")
 collision_layer = 1048576
 
