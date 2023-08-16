@@ -20,7 +20,7 @@ extends StaticBody3D
 
 ## Mapping of playback seconds to object scenes. When playback reaches a time
 ## key, the scene's pedestal object will switch to the corresponding object.
-# Godot has no support for typed dictionary exports, so time_keys and
+# Godot 4.1.X has no support for typed dictionary exports, so time_keys and
 # object_values are zipped together index-wise to form a dictionary mapping.
 # Due to this, time_keys and object_values MUST be of the same length,
 # otherwise time_mapping will be an empty dictionary.
@@ -31,13 +31,16 @@ var time_mapping : Dictionary = {}
 
 func _ready() -> void:
 	# Time mapping can't be initialized if there aren't as many keys as values.
-	if time_keys.size() == object_values.size():
-		# Zip together times and scenes as key-value pairs.
-		for index in range(time_keys.size()):
-			var time: int = time_keys[index]
-			var object_scene: PackedScene = object_values[index]
-			
-			time_mapping[time] = object_scene
+	if time_keys.size() != object_values.size():
+		printerr("ArchVideo Time Keys and Object Values cannot be of inequal sizes.")
+		return
+	
+	# Zip together times and scenes as key-value pairs.
+	for index in range(time_keys.size()):
+		var time: int = time_keys[index]
+		var object_scene: PackedScene = object_values[index]
+		
+		time_mapping[time] = object_scene
 
 
 # Monitor for if it is time to switch object according to video playback.
@@ -45,8 +48,10 @@ func _process(_delta) -> void:
 	if Engine.is_editor_hint() or video_node == null:
 		return
 	
+	# Playback time is given as a float, so first cast to an integer second.
 	var current_time: int = video_node.get_video_time() as int
 	
+	# Look up time for a dictionary key is constant, so this operation is light.
 	if time_mapping.has(current_time):
 		var next_object: PackedScene = time_mapping[current_time]
 		$ObjectPedestal.transition_scene(next_object)
