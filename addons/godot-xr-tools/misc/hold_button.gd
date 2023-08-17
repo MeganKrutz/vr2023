@@ -116,10 +116,10 @@ func _update_color():
 func _on_button_sensor_body_entered(body: Node3D):
 	if body is XRToolsPlayerBody:
 		player_present = true
-		print("Entered!")
+		#print("Entered!")
 
 
 func _on_button_sensor_body_exited(body: Node3D):
 	if body is XRToolsPlayerBody:
 		player_present = false
-		print("Exited!")
+		#print("Exited!")
