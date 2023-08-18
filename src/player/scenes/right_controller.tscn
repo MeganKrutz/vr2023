@@ -13,6 +13,7 @@ tracker = &"right_hand"
 hand_material_override = ExtResource("2_lc5x4")
 
 [node name="Movement" parent="." instance=ExtResource("2_uagje")]
+max_speed = 6.0
 strafe = true
 
 [node name="Pickup" parent="." instance=ExtResource("3_w5xsx")]
