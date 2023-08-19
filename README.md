@@ -4,6 +4,8 @@
 
  Made in Godot 4.1 and [Godot XR Tools](https://github.com/GodotVR/godot-xr-tools) by Bastiaan Olij.
 
+![Demo of Program](src/images/demo.gif)
+
  ## Usage
  ### Prerequisites
  - Windows 10/11.
@@ -26,7 +28,7 @@
  Use the left trigger button to aim and teleport to a specified location.
  Use the grip buttons to reach out and pick up items off pedestals.
 
- Hold down left grip in front of a pedestal to activate a hold button.
+ Hold down right trigger in front of a pedestal to activate a hold button.
  Hold down the button to completion to activate an instructive video.
 
  ## Source File Organization
@@ -34,5 +36,5 @@
  - images - Assets for image content (including this repository).
  - objects - .GLBs/Scenes for all solid objects (including pickable objects).
  - player - Scenes relevant for setting up player input.
- - sounds - Sound effect assets.
+e - sounds - Sound effect assets.
 
