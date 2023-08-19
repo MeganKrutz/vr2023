@@ -9,7 +9,7 @@
  - Windows 10/11.
  - Meta Quest 2 with USB-C cable to use Quest Link. Connecting via Bluetooth with Airlink can be used in place of a USB-C cable.
  - [Oculus App](https://www.meta.com/help/quest/articles/getting-started/getting-started-with-rift-s/install-oculus-pc-app/) to connect Quest 2 to PC.
- - (???).exe as downloaded from releases.
+ - foleyvr.exe as downloaded from releases.
 
  ### How to launch
  - Launch the Oculus App.
@@ -17,7 +17,7 @@
  - Tap the hamburger menu icon on the menu bar, and select "Quest Link".
  - Select "launch" once your PC is successfully found.
  - After the loading screen finishes, select the monitor icon to open your desktop.
- - Launch the executable ((???).exe) to enter the project.
+ - Launch the executable foleyvr.exe to enter the project.
 
  ### Controls
  For basic movement, use the right control stick to move forwards, backwards, and strafe left to right.

@@ -29,7 +29,7 @@ func setup_xr() -> void:
 		get_viewport().use_xr = true
 		
 	else:
-		print("OpenXR: XR Failed")
+		printerr("OpenXR: XR Failed")
 
 # Called when introduction video finishes playing.
 func _on_intro_finished() -> void:
