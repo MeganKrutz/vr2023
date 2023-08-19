@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
 [ext_resource type="Script" path="res://src/player/scenes/left_controller.gd" id="7_f3aav"]
-[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="8_i6ppy"]
 [ext_resource type="Script" path="res://src/player/scenes/right_controller.gd" id="8_wfild"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="12_hv42w"]
@@ -108,10 +108,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285168, 0.690662, 8.22228)
 script = ExtResource("2_5xxcy")
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D/IntroControl" instance=ExtResource("3_0lxao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.6862)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12883, -12.6862)
 screen_size = Vector2(16, 9)
-viewport_size = Vector2(1800, 1100)
+viewport_size = Vector2(1920, 1080)
 scene = ExtResource("5_grmiw")
 collision_layer = 1048576
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c221i7f6xpuk5"]
 
 [ext_resource type="Script" path="res://src/objects/scenes/arch_video.gd" id="1_bese3"]
-[ext_resource type="PackedScene" uid="uid://b573py1rykpqw" path="res://src/objects/assets/arch.glb" id="1_jqhmt"]
+[ext_resource type="PackedScene" uid="uid://dkc1a82nqov07" path="res://src/objects/assets/arch.glb" id="1_jqhmt"]
 [ext_resource type="Material" uid="uid://dx7knanic8afg" path="res://src/objects/materials/pedestal_material.tres" id="2_cwuof"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_8wrx3"]
 [ext_resource type="PackedScene" uid="uid://c50n3anwkfcqu" path="res://src/objects/scenes/object_pedestal.tscn" id="5_n4vrt"]
@@ -32,18 +32,19 @@ size = Vector3(2.6298, 4, 2.39229)
 script = ExtResource("1_bese3")
 
 [node name="Arch" parent="." instance=ExtResource("1_jqhmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 0, 0, 0)
 
 [node name="Plane" parent="Arch" index="0"]
 transform = Transform3D(0, 1.58618, 0, -2.26214, 0, 0, 0, 0, 1.58618, 0, 1.79197, 0.065742)
 surface_material_override/0 = ExtResource("2_cwuof")
 
 [node name="ArchCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(0, 1.58618, 0, -2.26214, 0, 0, 0, 0, 1.58618, 0, 1.79197, 0.065742)
+transform = Transform3D(-9.88752e-08, 1.586, 0, -2.262, -6.93263e-08, 0, 0, 0, 1.816, 0, 1.79197, 0.065742)
 shape = SubResource("ConcavePolygonShape3D_ka5vu")
 
 [node name="VideoViewport" parent="." instance=ExtResource("3_8wrx3")]
-transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -0.793265, 1.91636, 0.0626107)
-screen_size = Vector2(2.75, 5.125)
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -0.793265, 1.90131, 0.0626107)
+screen_size = Vector2(3.075, 5.125)
 viewport_size = Vector2(1536, 2048)
 
 [node name="ObjectPedestal" parent="." instance=ExtResource("5_n4vrt")]

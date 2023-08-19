@@ -14,7 +14,7 @@
  ### How to launch
  - Launch the Oculus App.
  - Connect Meta Quest 2 to PC using either Quest Link or Air Link, and allow "connected device" (your PC) to access files.
- - Tap the hamburger menu icon on the menu bar, and select "Quest Link".
+ - Access "Quick Settings" on the menu bar, and select "Quest Link".
  - Select "launch" once your PC is successfully found.
  - After the loading screen finishes, select the monitor icon to open your desktop.
  - Launch the executable foleyvr.exe to enter the project.

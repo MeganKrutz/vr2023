@@ -3,12 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://h338mixqwcp5" path="res://src/animations/scenes/base_video.tscn" id="1_1vfkl"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro.gd" id="1_hyth7"]
 [ext_resource type="VideoStream" path="res://src/animations/assets/intro.ogv" id="3_br0aa"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_cmbrh"]
-font_size = 111
-font_color = Color(0, 0, 0.796078, 1)
-outline_size = 60
-outline_color = Color(0.854902, 0.898039, 0.886275, 1)
+[ext_resource type="Texture2D" uid="uid://cwyoq4s4i73kg" path="res://src/images/foley_intro_screen.png" id="4_vs71g"]
 
 [sub_resource type="Animation" id="Animation_qm7cf"]
 length = 0.001
@@ -60,21 +55,9 @@ script = ExtResource("1_hyth7")
 layout_mode = 2
 video = ExtResource("3_br0aa")
 
-[node name="GUI" type="ColorRect" parent="."]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 347.0
-offset_top = 123.993
-offset_right = 1614.0
-offset_bottom = 898.993
-text = "Welcome to Foley VR!
-
-This text is placeholder.
-
-Press B to enter world."
-label_settings = SubResource("LabelSettings_cmbrh")
+[node name="GUI" type="Sprite2D" parent="."]
+position = Vector2(961, 547)
+texture = ExtResource("4_vs71g")
 
 [node name="FadeRectangle" type="ColorRect" parent="."]
 visible = false
