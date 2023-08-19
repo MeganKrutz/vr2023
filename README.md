@@ -36,5 +36,5 @@
  - images - Assets for image content (including this repository).
  - objects - .GLBs/Scenes for all solid objects (including pickable objects).
  - player - Scenes relevant for setting up player input.
-e - sounds - Sound effect assets.
+ - sounds - Sound effect assets.
 
