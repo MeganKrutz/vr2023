@@ -26,6 +26,9 @@ extends StaticBody3D
 # otherwise time_mapping will be an empty dictionary.
 var time_mapping : Dictionary = {}
 
+## Signal emitted when the object atop the object pedestal changes.
+signal object_changed
+
 ## Instantiation of the selected video scene.
 @onready var video_node : BaseVideo = $VideoViewport.scene_node
 
@@ -71,3 +74,7 @@ func play() -> void:
 # When the button in front of the pedestal is pressed, play the video.
 func _on_hold_button_pressed():
 	play()
+
+
+func _on_object_pedestal_object_changed():
+	emit_signal("object_changed")

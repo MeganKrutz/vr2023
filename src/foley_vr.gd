@@ -21,7 +21,7 @@ func _ready():
 func setup_xr() -> void:
 	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
-		print("OpenXR: XR Success")
+		print("OpenXR: XR Successfully initialized")
 		
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		
@@ -29,7 +29,7 @@ func setup_xr() -> void:
 		get_viewport().use_xr = true
 		
 	else:
-		printerr("OpenXR: XR Failed")
+		printerr("OpenXR: XR Failed to initialize.")
 
 # Called when introduction video finishes playing.
 func _on_intro_finished() -> void:

@@ -15,6 +15,11 @@ var is_ready : bool = false
 # Instantiation of the loaded scene.
 var object_node : Node
 
+# Constants representing the ranged grab methods of pickable objects, as defined
+# in the RangedMethod enum of the XRToolsPickable class.
+const SNAP : int = 1
+const LERP : int = 2
+
 func _ready():
 	is_ready = true
 	_update_scene()
@@ -57,7 +62,16 @@ func _update_scene() -> void:
 			printerr("object_pedestal: Cannot load node that is not apart of pedestal_object group.")
 			return
 		
-		# After adding the pickable objcet, snap it to pedestal.
+		# After adding the pickable object, snap it to pedestal.
+		# Pickable objects in this project animate to the hand by using
+		# interpolation.
+		#
+		# This animation happens when snapping to a snapzone, so we temporarily
+		# disable LERP-ing and set the ranged grab method to SNAP instead.
+		# We set the ranged grab method back after the snapping has finised.
 		add_child(object_node)
+		object_node._set_ranged_grab_method(SNAP)
 		$Pedestal/SnapZone.pick_up_object(object_node)
+		object_node._set_ranged_grab_method(LERP)
+
 		emit_signal("object_changed")

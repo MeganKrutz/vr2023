@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=30 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://src/foley_vr.gd" id="1_qksgx"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
@@ -10,19 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
 [ext_resource type="Script" path="res://src/player/scenes/left_controller.gd" id="7_f3aav"]
-[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="8_i6ppy"]
 [ext_resource type="Script" path="res://src/player/scenes/right_controller.gd" id="8_wfild"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="12_hv42w"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickables/pickable_coin.tscn" id="13_1cm6l"]
 [ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/tutor.tscn" id="13_km0jf"]
-[ext_resource type="PackedScene" uid="uid://c551ov1gwuaew" path="res://src/objects/scenes/pickables/pickable_brain.tscn" id="14_5xj7f"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
 [ext_resource type="PackedScene" uid="uid://gjqlvc1ssxjd" path="res://src/objects/scenes/pickables/pickable_star.tscn" id="16_xedbe"]
 [ext_resource type="PackedScene" uid="uid://c6x5jjgtt6ib4" path="res://src/animations/scenes/student.tscn" id="18_4gqs3"]
-[ext_resource type="Shader" uid="uid://c6okm2ay0fkjf" path="res://addons/godot-xr-tools/misc/hold_button_visualshader.tres" id="18_mk3sk"]
 [ext_resource type="PackedScene" uid="uid://quwb7t0ragm2" path="res://src/objects/scenes/pickables/pickable_handshake.tscn" id="19_cno6g"]
+[ext_resource type="PackedScene" uid="uid://dfbdxd5c21xnd" path="res://src/animations/scenes/connector.tscn" id="20_hly4d"]
 
 [sub_resource type="Resource" id="Resource_lfnh1"]
 script = ExtResource("12_hv42w")
@@ -38,34 +37,6 @@ bounce_threshold = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
-
-[sub_resource type="QuadMesh" id="QuadMesh_ano5v"]
-resource_local_to_scene = true
-size = Vector2(0.4, 0.4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6fx18"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("18_mk3sk")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/value = 0.2
-shader_parameter/fade = 0.05
-shader_parameter/radius = 0.8
-shader_parameter/width = 0.2
-
-[sub_resource type="QuadMesh" id="QuadMesh_1xx8n"]
-resource_local_to_scene = true
-size = Vector2(0.4, 0.4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwu82"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("18_mk3sk")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/value = 0.2
-shader_parameter/fade = 0.05
-shader_parameter/radius = 0.8
-shader_parameter/width = 0.2
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eh0ex"]
 panorama = ExtResource("7_q6bic")
@@ -141,31 +112,15 @@ video_scene = ExtResource("13_km0jf")
 time_keys = Array[int]([10, 20])
 object_values = Array[PackedScene]([ExtResource("13_1cm6l"), ExtResource("16_xedbe")])
 
-[node name="VideoViewport" parent="Pantheon/TutorArch" index="2"]
-scene = ExtResource("13_km0jf")
-
-[node name="ObjectPedestal" parent="Pantheon/TutorArch" index="3"]
-object_scene = ExtResource("14_5xj7f")
-
-[node name="Visualise" parent="Pantheon/TutorArch/HoldButton" index="0"]
-mesh = SubResource("QuadMesh_ano5v")
-surface_material_override/0 = SubResource("ShaderMaterial_6fx18")
-
 [node name="StudentArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 36.1372, 0.816437, 0)
 video_scene = ExtResource("18_4gqs3")
 time_keys = Array[int]([30, 15])
 object_values = Array[PackedScene]([ExtResource("16_xedbe"), ExtResource("19_cno6g")])
 
-[node name="VideoViewport" parent="Pantheon/StudentArch" index="2"]
-scene = ExtResource("18_4gqs3")
-
-[node name="ObjectPedestal" parent="Pantheon/StudentArch" index="3"]
-object_scene = ExtResource("13_1cm6l")
-
-[node name="Visualise" parent="Pantheon/StudentArch/HoldButton" index="0"]
-mesh = SubResource("QuadMesh_1xx8n")
-surface_material_override/0 = SubResource("ShaderMaterial_nwu82")
+[node name="ConnectorArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -32.593, 0.755594, 0)
+video_scene = ExtResource("20_hly4d")
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -215,15 +170,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216811, 5.27761, 30.2042)
 mesh = SubResource("QuadMesh_4ojt0")
 
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/XRCamera3D/IntroControl" method="_on_right_controller_button_pressed"]
-[connection signal="button_pressed" from="XROrigin3D/RightController" to="Pantheon" method="_on_right_controller_button_pressed"]
-[connection signal="object_changed" from="Pantheon/TutorArch/ObjectPedestal" to="XROrigin3D/LeftController" method="_on_object_pedestal_object_changed"]
-[connection signal="object_changed" from="Pantheon/TutorArch/ObjectPedestal" to="XROrigin3D/RightController" method="_on_object_pedestal_object_changed"]
-[connection signal="object_changed" from="Pantheon/StudentArch/ObjectPedestal" to="XROrigin3D/LeftController" method="_on_object_pedestal_object_changed"]
-[connection signal="object_changed" from="Pantheon/StudentArch/ObjectPedestal" to="XROrigin3D/RightController" method="_on_object_pedestal_object_changed"]
-
-[editable path="Pantheon/TutorArch"]
-[editable path="Pantheon/TutorArch/Arch"]
-[editable path="Pantheon/TutorArch/HoldButton"]
-[editable path="Pantheon/StudentArch"]
-[editable path="Pantheon/StudentArch/Arch"]
-[editable path="Pantheon/StudentArch/HoldButton"]
+[connection signal="object_changed" from="Pantheon/TutorArch" to="XROrigin3D/LeftController" method="_on_arch_object_changed"]
+[connection signal="object_changed" from="Pantheon/TutorArch" to="XROrigin3D/RightController" method="_on_arch_object_changed"]
+[connection signal="object_changed" from="Pantheon/StudentArch" to="XROrigin3D/LeftController" method="_on_arch_object_changed"]
+[connection signal="object_changed" from="Pantheon/StudentArch" to="XROrigin3D/RightController" method="_on_arch_object_changed"]
+[connection signal="object_changed" from="Pantheon/ConnectorArch" to="XROrigin3D/LeftController" method="_on_arch_object_changed"]
+[connection signal="object_changed" from="Pantheon/ConnectorArch" to="XROrigin3D/RightController" method="_on_arch_object_changed"]
