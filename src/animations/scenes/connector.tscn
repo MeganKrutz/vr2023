@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfbdxd5c21xnd"]
 
 [ext_resource type="PackedScene" uid="uid://h338mixqwcp5" path="res://src/animations/scenes/base_video.tscn" id="1_j2sgn"]
-[ext_resource type="VideoStream" path="res://src/animations/assets/tutor.ogv" id="2_qahrn"]
+[ext_resource type="VideoStream" path="res://src/animations/assets/connector.ogv" id="2_l36iw"]
 
 [node name="BaseVideo" instance=ExtResource("1_j2sgn")]
-video = ExtResource("2_qahrn")
+video = ExtResource("2_l36iw")
 
 [node name="Video" parent="." index="0"]
-stream = ExtResource("2_qahrn")
+stream = ExtResource("2_l36iw")
