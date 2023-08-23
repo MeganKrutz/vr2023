@@ -83,7 +83,6 @@ script = ExtResource("2_5xxcy")
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D/IntroControl" instance=ExtResource("3_0lxao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12883, -12.6862)
-visible = false
 screen_size = Vector2(16, 9)
 viewport_size = Vector2(1920, 1080)
 scene = ExtResource("5_grmiw")
@@ -131,6 +130,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0386944, -0.0361578, -2.16
 [node name="ConnectorArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -34.049, 1.34263, 0)
 video_scene = ExtResource("20_hly4d")
+time_keys = Array[int]([8, 14])
+object_values = Array[PackedScene]([ExtResource("13_1cm6l"), ExtResource("19_cno6g")])
 
 [node name="Connector" parent="Pantheon/ConnectorArch" instance=ExtResource("23_kxbis")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.617836, 0, -3.19213)
