@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c50n3anwkfcqu"]
+[gd_scene load_steps=12 format=3 uid="uid://c50n3anwkfcqu"]
 
 [ext_resource type="Script" path="res://src/objects/scenes/object_pedestal.gd" id="1_vh5pf"]
+[ext_resource type="PackedScene" uid="uid://c551ov1gwuaew" path="res://src/objects/scenes/pickables/pickable_brain.tscn" id="2_adb5k"]
 [ext_resource type="PackedScene" uid="uid://5uwvp5wwjxid" path="res://src/objects/scenes/pedestal.tscn" id="2_jgi0s"]
 [ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="3_ifjrv"]
 
@@ -164,6 +165,7 @@ _data = {
 
 [node name="ObjectPedestal" type="Node3D"]
 script = ExtResource("1_vh5pf")
+object_scene = ExtResource("2_adb5k")
 
 [node name="Pedestal" parent="." instance=ExtResource("2_jgi0s")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=33 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://src/foley_vr.gd" id="1_qksgx"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
@@ -20,8 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
 [ext_resource type="PackedScene" uid="uid://gjqlvc1ssxjd" path="res://src/objects/scenes/pickables/pickable_star.tscn" id="16_xedbe"]
 [ext_resource type="PackedScene" uid="uid://c6x5jjgtt6ib4" path="res://src/animations/scenes/student.tscn" id="18_4gqs3"]
+[ext_resource type="PackedScene" uid="uid://fha36rnpl7lj" path="res://src/animations/scenes/rewardees/tutor.tscn" id="18_5fn1r"]
 [ext_resource type="PackedScene" uid="uid://quwb7t0ragm2" path="res://src/objects/scenes/pickables/pickable_handshake.tscn" id="19_cno6g"]
 [ext_resource type="PackedScene" uid="uid://dfbdxd5c21xnd" path="res://src/animations/scenes/connector.tscn" id="20_hly4d"]
+[ext_resource type="PackedScene" uid="uid://6shd6xdqgwbd" path="res://src/animations/scenes/rewardees/student.tscn" id="21_kb7qx"]
+[ext_resource type="PackedScene" uid="uid://dii211rglt1jm" path="res://src/animations/scenes/rewardees/connector.tscn" id="23_kxbis"]
 
 [sub_resource type="Resource" id="Resource_lfnh1"]
 script = ExtResource("12_hv42w")
@@ -80,6 +83,7 @@ script = ExtResource("2_5xxcy")
 
 [node name="Intro" parent="XROrigin3D/XRCamera3D/IntroControl" instance=ExtResource("3_0lxao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12883, -12.6862)
+visible = false
 screen_size = Vector2(16, 9)
 viewport_size = Vector2(1920, 1080)
 scene = ExtResource("5_grmiw")
@@ -104,7 +108,7 @@ physics = SubResource("Resource_lfnh1")
 shape = SubResource("BoxShape3D_bv5lt")
 
 [node name="Pantheon" parent="." instance=ExtResource("13_4fmdd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.456, -5.614, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.456, -5.614, 2.66581)
 
 [node name="TutorArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(1.13247e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.13247e-07, 3.21403, 1.29579, -35.7204)
@@ -112,15 +116,24 @@ video_scene = ExtResource("13_km0jf")
 time_keys = Array[int]([10, 20])
 object_values = Array[PackedScene]([ExtResource("13_1cm6l"), ExtResource("16_xedbe")])
 
+[node name="Tutor" parent="Pantheon/TutorArch" instance=ExtResource("18_5fn1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.367393, 0, -2.05675)
+
 [node name="StudentArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
-transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 34.6812, 1.40348, 0)
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 34.4336, 1.40348, 0)
 video_scene = ExtResource("18_4gqs3")
 time_keys = Array[int]([30, 15])
 object_values = Array[PackedScene]([ExtResource("16_xedbe"), ExtResource("19_cno6g")])
 
+[node name="Student" parent="Pantheon/StudentArch" instance=ExtResource("21_kb7qx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0386944, -0.0361578, -2.16188)
+
 [node name="ConnectorArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -34.049, 1.34263, 0)
 video_scene = ExtResource("20_hly4d")
+
+[node name="Connector" parent="Pantheon/ConnectorArch" instance=ExtResource("23_kxbis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.617836, 0, -3.19213)
 
 [node name="Lights" type="Node3D" parent="."]
 

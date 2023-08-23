@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://fha36rnpl7lj"]
+
+[ext_resource type="PackedScene" uid="uid://d0bwgpk3xi7mq" path="res://src/animations/assets/rewardees/tutor.glb" id="1_6o5kb"]
+[ext_resource type="Script" path="res://src/animations/scenes/rewardees/tutor.gd" id="1_yo4pk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26mr1"]
+size = Vector3(1, 3.00086, 1.6015)
+
+[node name="Tutor" type="StaticBody3D"]
+script = ExtResource("1_yo4pk")
+
+[node name="TutorMesh" parent="." instance=ExtResource("1_6o5kb")]
+transform = Transform3D(-2.40413e-08, 0, 0.55, 0, 0.55, 0, -0.55, 0, -2.40413e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="TutorMesh/metarig" index="0"]
+bones/1/rotation = Quaternion(-0.0440549, 0.00432046, 0.0563993, 0.997427)
+bones/2/rotation = Quaternion(-0.0194562, -0.000707694, -0.0383115, 0.999075)
+bones/3/rotation = Quaternion(-0.0236601, -0.000959771, 0.0791176, 0.996584)
+bones/4/rotation = Quaternion(0.103734, 0.106768, -0.0612398, 0.986959)
+bones/7/position = Vector3(0.042406, 0.509357, -0.153306)
+bones/7/rotation = Quaternion(0.10788, 0.662478, -0.582937, 0.457897)
+bones/11/position = Vector3(-0.135927, 0.70344, -0.600234)
+bones/11/rotation = Quaternion(-0.319089, -0.567305, 0.490694, 0.579281)
+bones/14/position = Vector3(0.225421, -0.0162289, -0.0660212)
+bones/14/rotation = Quaternion(-0.032685, 0.688538, 0.724045, 0.0245942)
+bones/18/rotation = Quaternion(0.994283, 0.0641286, -0.00239478, 0.0853401)
+
+[node name="AnimationPlayer" parent="TutorMesh" index="1"]
+reset_on_save = false
+
+[node name="TutorCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149655, 1.56378, -0.0104227)
+shape = SubResource("BoxShape3D_26mr1")
+
+[editable path="TutorMesh"]

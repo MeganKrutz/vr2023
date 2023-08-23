@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://6shd6xdqgwbd"]
+
+[ext_resource type="PackedScene" uid="uid://bnx5bbce1f7x5" path="res://src/animations/assets/rewardees/student.glb" id="1_8oot8"]
+[ext_resource type="Script" path="res://src/animations/scenes/rewardees/student.gd" id="1_c15bt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eulfq"]
+size = Vector3(0.579489, 2.09425, 1.81367)
+
+[node name="Student" type="StaticBody3D"]
+script = ExtResource("1_c15bt")
+
+[node name="StudentMesh" parent="." instance=ExtResource("1_8oot8")]
+transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="StudentMesh/metarig_001" index="0"]
+bones/8/rotation = Quaternion(0.405031, 0.524124, 0.246951, 0.70729)
+bones/12/rotation = Quaternion(0.379791, -0.552516, -0.213007, 0.710713)
+bones/19/rotation = Quaternion(0.983298, -0.0192781, 0.00357098, 0.180944)
+bones/20/rotation = Quaternion(0.12264, -0.000322692, 0.0531124, 0.991029)
+bones/21/rotation = Quaternion(0.983331, -0.0224271, 0.00310417, 0.180409)
+bones/22/rotation = Quaternion(0.122845, -0.00433052, -0.0821064, 0.989014)
+
+[node name="StudentCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986986, 0)
+shape = SubResource("BoxShape3D_eulfq")
+
+[editable path="StudentMesh"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dii211rglt1jm"]
+
+[ext_resource type="PackedScene" uid="uid://vpqvbymbsjgx" path="res://src/animations/assets/rewardees/connector.glb" id="1_81xsc"]
+[ext_resource type="Script" path="res://src/animations/scenes/rewardees/connector.gd" id="1_ba41r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xm4fe"]
+size = Vector3(1.19084, 4.33026, 3.37404)
+
+[node name="Connector" type="StaticBody3D"]
+script = ExtResource("1_ba41r")
+
+[node name="ConnectorMesh" parent="." instance=ExtResource("1_81xsc")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="ConnectorMesh/metarig_002" index="0"]
+bones/1/rotation = Quaternion(-0.0884996, -0.00946995, -0.0528603, 0.994628)
+bones/2/rotation = Quaternion(-0.0558705, 0.00152775, 0.0433777, 0.997493)
+bones/8/rotation = Quaternion(-0.221017, 0.79111, -0.397408, 0.409102)
+bones/9/rotation = Quaternion(0.283041, -0.0708973, -0.505321, 0.812104)
+bones/12/position = Vector3(-0.347214, 1.06832, -0.022174)
+bones/12/rotation = Quaternion(0.288897, -0.559521, 0.114375, 0.768371)
+
+[node name="ConnectorCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94491, 0.132315)
+shape = SubResource("BoxShape3D_xm4fe")
+
+[editable path="ConnectorMesh"]
