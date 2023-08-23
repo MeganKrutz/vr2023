@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://h338mixqwcp5" path="res://src/animations/scenes/base_video.tscn" id="1_1vfkl"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro.gd" id="1_hyth7"]
 [ext_resource type="VideoStream" path="res://src/animations/assets/intro.ogv" id="3_br0aa"]
-[ext_resource type="Texture2D" uid="uid://dsv316ypkd0y3" path="res://src/images/foley_intro_screen.png" id="4_vs71g"]
+[ext_resource type="Texture2D" uid="uid://cwyoq4s4i73kg" path="res://src/images/foley_intro_screen.png" id="4_vs71g"]
 
 [sub_resource type="Animation" id="Animation_qm7cf"]
 length = 0.001

@@ -8,14 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cgij6m84jpu70" path="res://src/player/scenes/right_controller.tscn" id="4_kbx6j"]
 [ext_resource type="PackedScene" uid="uid://d2wvaagg3f6x1" path="res://src/animations/scenes/intro.tscn" id="5_grmiw"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
-[ext_resource type="PackedScene" uid="uid://dt744h3dh4fgk" path="res://src/objects/scenes/pantheon_2.tscn" id="6_0uu4j"]
 [ext_resource type="Script" path="res://src/player/scenes/left_controller.gd" id="7_f3aav"]
-[ext_resource type="Texture2D" uid="uid://bssbh5767am7x" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
-[ext_resource type="Texture2D" uid="uid://cm6b8rpv3bbld" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
+[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
+[ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="8_i6ppy"]
 [ext_resource type="Script" path="res://src/player/scenes/right_controller.gd" id="8_wfild"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="12_hv42w"]
 [ext_resource type="PackedScene" uid="uid://cwqqvtglx7fed" path="res://src/objects/scenes/pickables/pickable_coin.tscn" id="13_1cm6l"]
+[ext_resource type="PackedScene" uid="uid://w4jlra5vdbdo" path="res://src/objects/scenes/pantheon_3.tscn" id="13_4fmdd"]
 [ext_resource type="PackedScene" uid="uid://bp140hspkrypt" path="res://src/animations/scenes/tutor.tscn" id="13_km0jf"]
 [ext_resource type="PackedScene" uid="uid://c221i7f6xpuk5" path="res://src/objects/scenes/arch_video.tscn" id="16_rwd2b"]
 [ext_resource type="PackedScene" uid="uid://gjqlvc1ssxjd" path="res://src/objects/scenes/pickables/pickable_star.tscn" id="16_xedbe"]
@@ -103,23 +103,23 @@ physics = SubResource("Resource_lfnh1")
 [node name="PlayerCollision" type="CollisionShape3D" parent="XROrigin3D/Player"]
 shape = SubResource("BoxShape3D_bv5lt")
 
-[node name="Pantheon" parent="." instance=ExtResource("6_0uu4j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.02696, 0)
+[node name="Pantheon" parent="." instance=ExtResource("13_4fmdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.456, -5.614, 0)
 
 [node name="TutorArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
-transform = Transform3D(1.13247e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.13247e-07, 4.67003, 0.708752, -35.7204)
+transform = Transform3D(1.13247e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.13247e-07, 3.21403, 1.29579, -35.7204)
 video_scene = ExtResource("13_km0jf")
 time_keys = Array[int]([10, 20])
 object_values = Array[PackedScene]([ExtResource("13_1cm6l"), ExtResource("16_xedbe")])
 
 [node name="StudentArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
-transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 36.1372, 0.816437, 0)
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 34.6812, 1.40348, 0)
 video_scene = ExtResource("18_4gqs3")
 time_keys = Array[int]([30, 15])
 object_values = Array[PackedScene]([ExtResource("16_xedbe"), ExtResource("19_cno6g")])
 
 [node name="ConnectorArch" parent="Pantheon" instance=ExtResource("16_rwd2b")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -32.593, 0.755594, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -34.049, 1.34263, 0)
 video_scene = ExtResource("20_hly4d")
 
 [node name="Lights" type="Node3D" parent="."]
