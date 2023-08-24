@@ -4,6 +4,10 @@
 
  Made in Godot 4.1 and [Godot XR Tools](https://github.com/GodotVR/godot-xr-tools) by Bastiaan Olij.
 
+ Developed by Daniel Galvan (programmer) and Megan Krutz (visual design and assets).
+
+ This version of the project is configured to work as a Windows local application.
+
 ![Demo of Program](src/images/demo.gif)
 
  ## Usage
