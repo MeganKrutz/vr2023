@@ -4,6 +4,8 @@
 
  Made in Godot 4.1 and [Godot XR Tools](https://github.com/GodotVR/godot-xr-tools) by Bastiaan Olij.
 
+ Developed by Daniel Galvan (programmer) and Megan Krutz (visual design and assets).
+
  This version of the project is configured to work as a WebXR webpage app.
 
 ![Demo of Program](src/images/demo.gif)
@@ -23,7 +25,7 @@
  The former is recommended for optimal performance.
 
  PC Browser with Quest Link:
- - Navigate to (WEBSITE), where  the app is hosted.
+ - Navigate to [Foley VR](https://galvandaniel.itch.io/foley-vr-training-module?secret=xwUVaKeLhU5UxjDGdjokH3EPPQ), where the app is hosted.
  - Launch the Oculus App.
  - Connect Meta Quest 2 to PC using either Quest Link or Air Link, and allow "connected device" (your PC) to access files.
  - Access "Quick Settings" on the menu bar, and select "Quest Link".
@@ -34,7 +36,7 @@
  Launching off of built-in Meta Quest Browser:
  - On the home screen, select "App Library" on the bottom bar.
  - Open the "Meta Quest Browser"
- - Navigate to (WEBSITE), where the app is hosted.
+ - Navigate to [Foley VR](https://galvandaniel.itch.io/foley-vr-training-module?secret=xwUVaKeLhU5UxjDGdjokH3EPPQ), where the app is hosted.
  - Press "Enter VR" to enter the project.
 
  At any time, you may press the home button on the Quest right controller to exit the app.
