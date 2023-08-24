@@ -10,7 +10,6 @@
 
  ## Usage
  ### Prerequisites
- - Windows 10/11.
  - Meta Quest 2
 
  For running off a PC browser (Recommended):
