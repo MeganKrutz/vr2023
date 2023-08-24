@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://o8v3t6xag0xt"]
+[gd_scene load_steps=30 format=3 uid="uid://o8v3t6xag0xt"]
 
 [ext_resource type="Script" path="res://src/foley_vr.gd" id="1_qksgx"]
 [ext_resource type="Script" path="res://src/animations/scenes/intro_control.gd" id="2_5xxcy"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d2wvaagg3f6x1" path="res://src/animations/scenes/intro.tscn" id="5_grmiw"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_s8xsf"]
 [ext_resource type="Script" path="res://src/player/scenes/left_controller.gd" id="7_f3aav"]
-[ext_resource type="Texture2D" uid="uid://pdibrr3l0224" path="res://src/images/belfast_farmhouse_4k.exr" id="7_q6bic"]
 [ext_resource type="Texture2D" uid="uid://bdpixtrtrf0ce" path="res://src/images/fog_texture.webp" id="8_1hqiw"]
 [ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="8_i6ppy"]
 [ext_resource type="Script" path="res://src/player/scenes/right_controller.gd" id="8_wfild"]
@@ -41,15 +40,10 @@ bounce_threshold = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv5lt"]
 size = Vector3(0.25, 2, 0.25)
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eh0ex"]
-panorama = ExtResource("7_q6bic")
-
-[sub_resource type="Sky" id="Sky_6ggyu"]
-sky_material = SubResource("PanoramaSkyMaterial_eh0ex")
-
 [sub_resource type="Environment" id="Environment_23npv"]
-background_mode = 2
-sky = SubResource("Sky_6ggyu")
+background_mode = 1
+background_color = Color(0.929412, 0.945098, 0.952941, 1)
+background_energy_multiplier = 0.75
 fog_enabled = true
 fog_light_color = Color(0.615686, 0.698039, 1, 1)
 fog_light_energy = 0.3
@@ -139,7 +133,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.617836, 0, -3.19213)
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="SkyLight" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(0.895789, -0.441575, -0.0507299, -0.145637, -0.399426, 0.905123, -0.419942, -0.803412, -0.422111, 1.85191, 29.6341, -9.7104)
+transform = Transform3D(0.792756, -0.0983153, -0.601557, 0.441799, -0.587251, 0.678197, -0.419942, -0.803412, -0.422111, 1.85191, 29.6341, -9.7104)
+light_energy = 1.5
+directional_shadow_mode = 0
 
 [node name="HeavenlyLight" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -0.970266, -0.24204, 0, 0.24204, -0.970266, 0, 59.9668, -5.74279)
@@ -183,6 +179,13 @@ skeleton = NodePath("../LeftFog")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216811, 5.27761, 30.2042)
 mesh = SubResource("QuadMesh_4ojt0")
 
+[node name="EnterWebXR" type="CanvasLayer" parent="."]
+
+[node name="EnterVRButton" type="Button" parent="EnterWebXR"]
+offset_right = 121.0
+offset_bottom = 59.0
+text = "Enter VR"
+
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/XRCamera3D/IntroControl" method="_on_right_controller_button_pressed"]
 [connection signal="object_changed" from="Pantheon/TutorArch" to="XROrigin3D/LeftController" method="_on_arch_object_changed"]
 [connection signal="object_changed" from="Pantheon/TutorArch" to="XROrigin3D/RightController" method="_on_arch_object_changed"]
@@ -190,3 +193,4 @@ mesh = SubResource("QuadMesh_4ojt0")
 [connection signal="object_changed" from="Pantheon/StudentArch" to="XROrigin3D/RightController" method="_on_arch_object_changed"]
 [connection signal="object_changed" from="Pantheon/ConnectorArch" to="XROrigin3D/LeftController" method="_on_arch_object_changed"]
 [connection signal="object_changed" from="Pantheon/ConnectorArch" to="XROrigin3D/RightController" method="_on_arch_object_changed"]
+[connection signal="pressed" from="EnterWebXR/EnterVRButton" to="." method="_on_enter_webxr_button_pressed"]

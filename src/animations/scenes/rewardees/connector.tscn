@@ -14,11 +14,11 @@ transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 
 
 [node name="Skeleton3D" parent="ConnectorMesh/metarig_002" index="0"]
 bones/1/rotation = Quaternion(-0.0884996, -0.00946995, -0.0528603, 0.994628)
-bones/2/rotation = Quaternion(-0.0558705, 0.00152775, 0.0433777, 0.997493)
+bones/2/rotation = Quaternion(-0.0639066, 0.000423773, 0.0120323, 0.997883)
 bones/8/rotation = Quaternion(-0.221017, 0.79111, -0.397408, 0.409102)
 bones/9/rotation = Quaternion(0.283041, -0.0708973, -0.505321, 0.812104)
-bones/12/position = Vector3(-0.347214, 1.06832, -0.022174)
-bones/12/rotation = Quaternion(0.288897, -0.559521, 0.114375, 0.768371)
+bones/12/position = Vector3(-0.296112, 1.01671, 0.156991)
+bones/12/rotation = Quaternion(0.392475, -0.471906, 0.00921991, 0.78942)
 
 [node name="ConnectorCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94491, 0.132315)
