@@ -4,6 +4,8 @@
 
  Made in Godot 4.1 and [Godot XR Tools](https://github.com/GodotVR/godot-xr-tools) by Bastiaan Olij.
 
+ Compiled with [rcedit-tool](https://github.com/electron/rcedit) by Electron.
+
  Developed by Daniel Galvan (programmer) and Megan Krutz (visual design and assets).
 
  This version of the project is configured to work as a Windows local application.
@@ -42,3 +44,7 @@
  - player - Scenes relevant for setting up player input.
  - sounds - Sound effect assets.
 
+## Building From Source
+ - Import the "project.godot" into Godot
+ - Enable use of rcedit-tool by navigating to Editor > Editor Settings > Export > Windows, and provide the path of rcedit tool executable, located in addons/rcedit.
+ - Navigate to Project > Export... > Windows Desktop > Export Project. This will create foleyvr.exe in the root of the project directory.
