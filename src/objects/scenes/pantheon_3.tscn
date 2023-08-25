@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://w4jlra5vdbdo"]
+[gd_scene load_steps=16 format=3 uid="uid://w4jlra5vdbdo"]
 
 [ext_resource type="PackedScene" uid="uid://br1grqq41ev3x" path="res://src/objects/assets/pantheon_3/pantheon_3.glb" id="1_11ffk"]
+[ext_resource type="Material" uid="uid://0wel1oo62so2" path="res://src/objects/materials/pantheon_floor.tres" id="2_ndcpq"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/audio/surface_audio.tscn" id="2_wg76a"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/audio/surface_audio_type.gd" id="3_1gn3j"]
 [ext_resource type="AudioStream" uid="uid://bf1j0qvmjpl3o" path="res://src/sounds/walking_1.wav" id="4_vvs22"]
@@ -32,6 +33,9 @@ walk_pitch_maximum = 1.2
 [node name="Pantheon" type="StaticBody3D"]
 
 [node name="PantheonMesh" parent="." instance=ExtResource("1_11ffk")]
+
+[node name="body" parent="PantheonMesh" index="0"]
+surface_material_override/0 = ExtResource("2_ndcpq")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(37.293, 0, 0, 0, 22.3883, 0, 0, 0, 34.7879, 0, 23.3707, -3.77512)

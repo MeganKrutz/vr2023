@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0wel1oo62so2"]
+
+[ext_resource type="Texture2D" uid="uid://dkwuicju1x1aj" path="res://src/objects/assets/pantheon_3/pantheon_3_PANFLOOR.png" id="1_35mmx"]
+
+[resource]
+resource_name = "floor"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_35mmx")
+roughness = 0.0636364
