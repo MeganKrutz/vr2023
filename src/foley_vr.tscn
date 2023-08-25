@@ -43,7 +43,7 @@ size = Vector3(0.25, 2, 0.25)
 [sub_resource type="Environment" id="Environment_23npv"]
 background_mode = 1
 background_color = Color(0.929412, 0.945098, 0.952941, 1)
-background_energy_multiplier = 0.75
+background_energy_multiplier = 0.6
 fog_enabled = true
 fog_light_color = Color(0.615686, 0.698039, 1, 1)
 fog_light_energy = 0.3
@@ -133,8 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.617836, 0, -3.19213)
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="SkyLight" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(0.792756, -0.0983153, -0.601557, 0.441799, -0.587251, 0.678197, -0.419942, -0.803412, -0.422111, 1.85191, 29.6341, -9.7104)
-light_energy = 1.5
+transform = Transform3D(0.792756, -0.0983149, -0.601558, 0.441799, -0.587251, 0.678196, -0.419942, -0.803412, -0.422111, 1.85191, 29.6341, -9.7104)
 directional_shadow_mode = 0
 
 [node name="HeavenlyLight" type="SpotLight3D" parent="Lights"]
